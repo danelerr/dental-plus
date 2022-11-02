@@ -1,23 +1,23 @@
 import { Router } from "express";
 import {
-  getEmployees,
-  createEmployees,
-  updateEmployees,
-  deleteEmployee,
+  getOcupacionByID,
+  createOcupacion,
+  updateOcupacion,
+  deleteOcupacion,
   getOcupacion
-} from "../controllers/employees.controller.js";
+} from "../controllers/ocupacion.controller.js";
 
 const router = Router();
 
-router.get("/employees", getEmployees);
+router.get("/employees", getOcupacion);
 
-router.get("/employees/:id", getOcupacion);
+router.get("/employees/:id", getOcupacionByID);
 
-router.post("/employees", createEmployees);
+router.post("/employees", createOcupacion);
 
 //para actualizar solo un dato, cambiar por path
-router.put("/employees/:id", updateEmployees);
+router.put("/employees/:id", updateOcupacion);
 
-router.delete("/employees/:id", deleteEmployee);
+router.delete("/employees/:id", deleteOcupacion);
 
 export default router;

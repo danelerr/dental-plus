@@ -1,6 +1,6 @@
 import { pool } from "../db.js";
 
-export const getEmployees = async (req, res) => {
+export const getOcupacion = async (req, res) => {
     try {
         const [rows] = await pool.query("select * from ocupacion");
         res.json(rows);
@@ -11,7 +11,7 @@ export const getEmployees = async (req, res) => {
     }
 };
 
-export const getOcupacion = async (req, res) => {
+export const getOcupacionByID = async (req, res) => {
     try {
         console.log(req.params);
         const [rows] = await pool.query("SELECT * FROM ocupacion where id = ?", [
@@ -30,7 +30,7 @@ export const getOcupacion = async (req, res) => {
     }
 };
 
-export const createEmployees = async (req, res) => {
+export const createOcupacion = async (req, res) => {
     try {
         console.log(req);
         const { id, ocupacion } = req.body;
@@ -49,7 +49,7 @@ export const createEmployees = async (req, res) => {
     }
 };
 
-export const deleteEmployee = async (req, res) => {
+export const deleteOcupacion = async (req, res) => {
     try {
         const [result] = await pool.query("DELETE FROM ocupacion WHERE id = ?", [
             req.params.id,
@@ -67,7 +67,7 @@ export const deleteEmployee = async (req, res) => {
     }
 };
 
-export const updateEmployees = async (req, res) => {
+export const updateOcupacion = async (req, res) => {
     const { id } = req.params;
     const { ocupacion } = req.body;
 

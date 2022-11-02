@@ -7,6 +7,7 @@ import {
   getOcupacion
 } from "../controllers/ocupacion.controller.js";
 
+
 const router = Router();
 
 router.get("/employees", getOcupacion);

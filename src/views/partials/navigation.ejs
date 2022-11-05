@@ -1,31 +1,46 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-         <img src="img/Logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-        <a class="navbar-brand" href="/">Clinica Dental Plus</a>
+        <a class="navbar-brand" href="/">
+            <img src="img/Logo.png" alt="" width="30" height="24"  class="d-inline-block align-text-top">
+            Clinica Dental Plus
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-
+        <% if (user != undefined) { %>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
+                <% if(VerP) { %> <!-- Paciente -->
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/Perfil">Agendar</a>
+                    <a class="nav-link active" aria-current="page" href="/Perfil/Agenda">Agendar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/Perfil">Tratamientos</a>
+                    <a class="nav-link active" aria-current="page" href="/Perfil/Tratamientos">Tratamientos</a>
+                </li>
+                <% } %>
+                <% if(VerO) { %> <!-- odonto -->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/Perfil/Gpaciente">Pacientes</a>
+                </li>
+                <% } %>
+                <% if(VerO) { %><!-- Administrador -->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/Perfil/Godonto">Odontologos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/Perfil">Configuraciones</a>
+                    <a class="nav-link active" aria-current="page" href="/Perfil/Gpaciente">Pacientes</a>
+                </li>
+                <% } %>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/Perfil/settings">Configuraciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/cerrar">cerrar sesion</a>
+                    <a class="nav-link active" aria-current="page" href="/cerrar">Cerrar Sesion</a>
                 </li>
             </ul>
         </div>
-
-
+        <% } else { %>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
@@ -34,12 +49,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="form">Registrarse</a>
                 </li>
-                    <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="Login">Iniciar sesión</a>
                 </li>
             </ul>
         </div>
-
+        <% } %>
         
     </div>
 </nav>

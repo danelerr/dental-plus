@@ -1,0 +1,222 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.contenedor{
+    width: 90%;
+    max-width: 1200px;
+    overflow: hidden;
+    margin: auto;
+    padding: 60px 0;
+}
+
+.header{
+    height: 100vh;
+    /* 02 */
+    background-image: linear-gradient(to top, rgba(19, 92, 202, 0.849) 0%, hsla(0, 0%, 10%, 0.048) 100%), url(img/fondo3.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+}
+
+.head{
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+.spread{
+    transform: translateX(0);
+}
+
+
+.titulo{
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.copy{
+    font-weight: 300;
+    font-size: 25px;
+    text-align: center;
+}
+
+/* Services */
+
+.subtitulo{
+    color: #0716e7e5;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.contenedor-servicio{
+    display: flex;
+    justify-content: space-evenly;
+    background-image: url(img/dentista.jpg);
+    background-size: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contenedor-servicio img{
+    width: 50%;
+}
+
+.checklist-servicio{
+    width: 45%;
+}
+
+.service{
+    margin-bottom: 20px;
+}
+
+.n-service{
+    margin-bottom: 7px;
+    color: #000;
+}
+
+.number{
+    display: inline-block;
+    /* 02 */
+    background-image: linear-gradient(to top, #aac5eb 0%, #083ed3 100%);
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.gallery{
+    background: rgba(236, 240, 245, 0.658);
+}
+
+.contenedor-galeria{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+
+.img-galeria{
+    width: 30%;
+    display: block;
+    margin-bottom: 15px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .6);
+    cursor: pointer;
+}
+
+.agregar-imagen{
+    width: 60%;
+    transform: scale(0);
+    border-radius: 10px;
+    transition: transform .3s .2s;
+}
+
+.showImage{
+    transform: scale(1);
+}
+
+.show{
+    transform: translate(0);
+}
+
+.close{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.line{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    height: 2px;
+    background: #fff;
+    margin-bottom: 60px;
+}
+
+.contacto{
+
+    background: #000;
+    color: #fff;
+}
+
+@media screen and (max-width: 800px){
+    .menu-navegacion{
+        width: 50vw;
+    }
+
+    .titulo{
+        font-size: 40px;
+    }
+
+    .contenedor-servicio img{
+        width: 80%;
+        margin-bottom: 40px;
+    }
+    
+    .checklist-servicio{
+        width: 80%;
+    }
+
+    .service{
+        margin-bottom: 30px;
+    }
+
+    .img-galeria{
+        width: 45%;
+    }
+    
+    .agregarImagen{
+        width: 80%;
+    }
+    
+    
+    
+}
+
+
+@media screen and (max-width: 500px){
+    .menu-navegacion{
+        width: 65vw;
+    }
+
+    .titulo{
+        font-size: 30px;
+    }
+
+    .subtitulo{
+        font-size: 30px;
+    }
+
+    .img-galeria{
+        width: 95%;
+    }
+    
+    .agregar-imagen{
+        width: 90%;
+    }
+
+    
+}

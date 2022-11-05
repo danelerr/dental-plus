@@ -1,7 +1,9 @@
 import { pool } from "../db.js";
+import passport from 'passport';
 
 export const slash = (req, res) => {
-  res.render('index.ejs', {titulo: 'quiero enviar un json'});
+  console.log(req.user);
+  res.render('index.ejs', { titulo: 'hola' });
 };
 
 export const ping = async (req, res) => {
@@ -10,7 +12,20 @@ export const ping = async (req, res) => {
     res.json(rows);
   } catch (error) {
     return res.status(500).json({
-        mensaje: "algo salio mal",
+      mensaje: "algo salio mal",
     });
   }
 };
+
+
+//para mostrar los imputs de login
+export const showLogin = (req, res) => {
+  res.render('iniciarSesion.ejs');
+};
+
+//para iniciar sesion
+export const sendData = passport.authenticate('local.login', {
+  successRedirect: '/home',
+  failureRedirect: '/login',
+  failureFlash: true
+});

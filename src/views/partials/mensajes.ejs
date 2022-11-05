@@ -1,0 +1,30 @@
+<% if (aprobado.length > 0) { %>
+<div class="container">
+    <div class="row">
+        <div class="mx-auto">
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+                </svg>
+                <div>
+                   <%= aprobado[0] %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
+
+<% if (denegado.length > 0) { %>
+<div class="container">
+    <div class="row">
+        <div class="mx-auto">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong><%= denegado[0] %></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+<% } %>

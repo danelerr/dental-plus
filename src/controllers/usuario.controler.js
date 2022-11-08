@@ -1,6 +1,6 @@
 import { pool } from "../db.js";
 import passport from 'passport';
-import Insertar from "../lib/Insertar.js"
+import Insertar from "../lib/insertar.js"
 import Eliminar from "../lib/eliminar.js";
 import Modificar from "../lib/modificar.js";
 import busqueda from "../lib/busquedas.js";

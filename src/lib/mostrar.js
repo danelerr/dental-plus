@@ -26,4 +26,14 @@ Listar.Admin= async() => {
     }
 }
 
+
+Listar.Servicios = async() =>{
+    try {
+        const Result =  await pool.query('Select * from tratamiento');
+        return Result
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 export default Listar;

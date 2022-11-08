@@ -1,14 +1,23 @@
 import { Router } from "express";
-import { ping, 
+import { 
          showLogin,
          slash, 
-         sendData} from "../controllers/index.controller.js";
-  
+         sendData,
+        cerrarSesion
+    } from "../controllers/index.controller.js";
+
+
+import { notlogeado } from "../lib/privado.js";
 const router = Router();
 
-router.get('/', slash);
-router.get("/ping", ping);
-router.get('/login', showLogin);
-router.post('/login', sendData);
+
+router.get('/', notlogeado, slash);
+// para iniciar sesion
+router.get('/login', notlogeado, showLogin);
+router.post('/login', notlogeado, sendData);
+
+router.get('/cerrar', cerrarSesion);
+
+
 
 export default router;

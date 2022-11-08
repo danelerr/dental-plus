@@ -1,0 +1,81 @@
+<head>
+    <title>Paciente</title>
+    <meta name="viewport" content="user-scalable=no, width=device,with" charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
+</head>
+<%- include('../partials/barramenu') %>
+<div class="container">
+    <div class="row">
+        <div class="jumbotron ">
+            <h1>
+                Seleccione su tratamiento
+            </h1>
+            <form action="/agendarO" method="post">
+                <p align="right"> 
+                    <button type="submit" class="btn btn-dark" name="idespe" value= <%= idd %> > Volver </button>
+                </p>
+            </form>
+       </div>
+    </div> 
+</div> 
+
+<div class="container">
+    
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Lista de Tratamientos</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="userList" class="table table-bordered table-hover table-striped">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Tiempo</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Reservar</th>     
+                                <th></th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <% for(let i=0; i < datos.length; i++) { %>
+                            <tr>
+                                <th scope="row"> <%= i + 1%> </th>
+                                <td> <%= datos[i].nombre %> </td>
+                                <td> <%= datos[i].descripcion %></td>
+                                <td> <%= datos[i].tiempo %> </td>
+                                <td> <%= datos[i].precio %> </td>
+                                <form action="/reservar" method="post">
+                                    <th>
+                                        <input type="date" name="fecha" step="2" required/>
+                                    </th>
+                                    <th>
+                                        <input type="time" name="hora" step="3600" required/>
+                                    </th>
+                                    <td>
+                                        <button type="submit" id="seleccionar" name="idtrata" value=<%= datos[i].id %> class="btn btn-success">
+                                        Reservar</button>
+                                    </td>
+                                </form>
+                            </tr>
+                            <% } %>
+                            </tbody>                        
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+    </div>    
+
+</div>

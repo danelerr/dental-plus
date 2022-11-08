@@ -1,7 +1,11 @@
 import express from "express";
+
+//rutas 
 import employeesRoutes from "./routes/ocupacion.routes.js";
 import indexRoutes from "./routes/index.routes.js";
-import usuarioRoutes from "./routes/usuario.routes.js"
+import usuarioRoutes from "./routes/usuario.routes.js";
+import reservaRoutes from './routes/reserva.routes.js';
+
 import {dirname, join} from 'path';
 import {fileURLToPath} from 'url';
 import morgan from "morgan";
@@ -62,6 +66,8 @@ app.use( async (req, res, next) => {
         const P = await Listar.Pacientes()
         const O = await Listar.Odonto()
         const A = await Listar.Admin()
+        const S = await Listar.Servicios()
+        app.locals.Servicios = S[0];
         app.locals.pacientes = P[0];        
         app.locals.odontologos = O[0];        
         app.locals.admins = A[0];        
@@ -71,12 +77,12 @@ app.use( async (req, res, next) => {
     next();
 });
 
+app.use(express.static(join(__dirname, 'public'))) 
+
 
 app.use(indexRoutes);
 app.use(employeesRoutes);
 app.use(usuarioRoutes);
-
-
-app.use(express.static(join(__dirname, 'public'))) 
+app.use(reservaRoutes);
 
 export default app;

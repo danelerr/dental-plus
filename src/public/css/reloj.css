@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+    
+body{
+    width: 100%;
+    height: 100vh;
+    background: #2f0202;
+    background: radial-gradient(ellipse at center,#3789e7d3 0%, #000000);
+    background-size: 100%;
+    
+}
+    
+p{
+    margin: 0;
+    padding: 0;
+    
+}
+    
+.reloj{
+    
+    font-family: ‘share tech mono’, monospace;
+    color: #ffffff;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    text-shadow: 0 0 20PX rgb(250, 250, 250),0 0 20px rgb(238, 247, 189);
+    
+}
+    
+.fecha{
+    
+    letter-spacing: 0.1em;
+    font-size: 24px;
+    
+}
+    
+.tiempo{
+    
+    letter-spacing: 0.1em;
+    font-size: 24px;
+    
+}

@@ -1,0 +1,38 @@
+<body>
+
+    <%- include('../partials/barramenu') %>
+    
+        <!-------GESTIÓN SERVICIOS------->
+    
+        <h1> CATÁLOGO DE SERVICIOS</h1>
+        <div class="container">
+            <div class="row">
+                <form action="/servicio/insert" method="POST">
+                    <fieldset>
+                        <legend> Tratamiento </legend>
+                        <input type="text" class="form-control" name="nombre" id="item">
+                        <br>
+                        <legend> Descripción </legend>
+                        <input type="text" class="form-control" name="descripcion" id="desc">
+                        <br>
+                        <legend> Tiempo </legend>
+                        <input type="time" class="form-control" name="tiempo" id="tiempo">
+                        <br>
+                        <legend> Precio </legend>
+                        <input type="number" step="0.01" class="form-control" name="precio" id="precio">
+                        <br>
+                        <input type="submit" class="btn btn-primary" value="insertar">
+                        <li class="btn">
+                            <a class="btn btn-success" href="/listadoSE">Mostrar/Actualizar</a>
+                        </li>
+                    </fieldset>
+                </form>
+                <hr>
+                
+            </div>
+    
+        </div>
+    
+    </body>
+    
+    </html>

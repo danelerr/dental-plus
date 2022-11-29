@@ -86,8 +86,7 @@ export const insertarFicha = async (req, res) => {
         console.log(data);
         const [result] = await pool.query('INSERT INTO ficha SET ? ', [data]);
         req.flash('aprobado', 'reserva creada existosamente');
-         // res.redirect('/');
-        res.send('datos enviados exitosamente');
+        res.redirect('/');
     } catch(error) {
         res.send(error);
     }

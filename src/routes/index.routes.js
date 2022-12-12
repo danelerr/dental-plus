@@ -18,6 +18,4 @@ router.post('/login', notlogeado, sendData);
 
 router.get('/cerrar', cerrarSesion);
 
-
-
 export default router;

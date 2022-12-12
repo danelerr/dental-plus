@@ -16,6 +16,8 @@ passport.use('local.login', new Strategy.Strategy({
             const P = rows[0]
             const Validar = await helprs.descriptar(pass, P[0].contra);// verificamos su contraseña
             if (Validar) {// ¿contraseña correcta?
+                const [rows] = await pool.query('insert into bitacora(accion, culpable) values(?, ?)', ['Ingresó al sistema', UsuI]);
+                console.log('hola');
                 done(null, P[0], req.flash('aprobado', 'Bienvenido' + UsuI)) // mando los datos a las variables globales y mando un mensaje de exito
             } else {
                 done(null, false, req.flash('denegado', 'contraseña incorrecta'))
@@ -24,7 +26,7 @@ passport.use('local.login', new Strategy.Strategy({
             return done(null, false, req.flash('denegado', 'usuario no existe'))
         }
     } catch {
-        return done(null, false, req.flash('denegado', 'usuario no existe'))
+        return done(null, false, req.flash('denegado', 'usuario no existe, error'))
     }
 }))
 

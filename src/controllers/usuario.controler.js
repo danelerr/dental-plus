@@ -210,5 +210,14 @@ export const buscarOdontologos = async(req, res) => {
 }
 
 export const EntrarBitacora = async(req,res) => {
-    res.render('administrador/Bitacora.ejs')
+    const bit = []
+    res.render('administrador/Bitacora.ejs',{bit})
+}
+
+export const entrar = async(req,res) => {
+    const Inicio = req.body.Inicio
+    const Fin = req.body.Fin
+    const [bit] = await pool.query('Select id,date_format(fecha, "%d-%m-%Y %T")as fecha ,accion,culpable  From bitacora where fecha BETWEEN "'+Inicio+'" AND "'+Fin+'" ORDER BY id desc')
+    console.log()
+    res.render('administrador/Bitacora.ejs',{bit: bit})
 }

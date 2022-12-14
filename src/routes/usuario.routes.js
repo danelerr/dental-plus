@@ -24,7 +24,8 @@ import { insertarUsuario,
     Mpaciente, 
     buscarPacientes,
     buscarOdontologos,
-    EntrarBitacora
+    EntrarBitacora,
+    entrar
 } from "../controllers/usuario.controler.js";
 
 
@@ -60,10 +61,12 @@ router.get('/gpaciente', logeadoE, entrarGpaciente);
 router.post('/gpaciente', logeadoE, Listarpaciente);
 router.get('/rpaciente', logeadoE, RenderformP);
 router.post('/rpaciente/registrar', logeadoE, InsertarPaciente);
-router.post('/gpaciente/delete', logeadoA, EliminarPaciente);
-router.post('/gpaciente/modificar', logeadoA, ModificarPaciente);
-router.post('/mpaciente', logeadoA, Mpaciente);
+router.post('/gpaciente/delete', logeadoE, EliminarPaciente);
+router.post('/gpaciente/modificar', logeadoE, ModificarPaciente);
+router.post('/mpaciente', logeadoE, Mpaciente);
 router.get('/bpaciente', logeadoE, buscarPacientes);
+
+router.post('/buscar',logeadoA,entrar)
 router.get('/Bitacora',logeadoA,EntrarBitacora)
 
 

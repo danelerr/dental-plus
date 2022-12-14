@@ -1,6 +1,20 @@
 <%- include('../partials/barramenu') %>
-<div class=" mx-auto ">
-<h3> BITACORA </h3>
+<div class="container">
+    <div class="row">
+        <div class="jumbotron ">
+            <h1>
+                Bitacora
+            </h1>
+       </div>
+    </div>
+<form class="form-inline" action="/buscar" method="post">
+    <div class="form-group">
+        Fecha inicio <input class="form" id="b" name="Inicio" placeholder="Ingrese un nombre a buscar" type="date">
+        Fecha fin <input class="form" id="b" name="Fin" placeholder="Ingrese un nombre a buscar" type="date">
+        <button type="submit" type="button" class="btn btn-primary"> Buscar <i class="bi bi-search"></i></button>
+    </div>
+   
+</form>
             <table class="table table-borderer table-hover" id="listaProductos" style="width:715px">
                 <thead>
                     <th scope="col">#</th>
@@ -9,14 +23,26 @@
                         <th scope="col">Culpable</th>
                 </thead>
                 <tbody>
+                    <% if (bit.length <= 0) { %>
                     <% for (let i=0; i < Bitacora.length; i++) { %>
                     <tr>
-                        <td scope="col"><%= Bitacora[i].id%></td>
+                        <td scope="col"><%= i+1 %></td>
                         <td scope="col"><%= Bitacora[i].fecha%></td>
                         <td scope="col"><%= Bitacora[i].accion%></td>
                         <td scope="col"><%= Bitacora[i].culpable%></td>
                     </tr>
                     <% } %>
+                    <% } %>
+                    <% if (bit.length > 0) { %>
+                        <% for (let i=0; i < bit.length; i++) { %>
+                            <tr>
+                                <td scope="col"><%= i+1 %></td>
+                                <td scope="col"><%= bit[i].fecha%></td>
+                                <td scope="col"><%= bit[i].accion%></td>
+                                <td scope="col"><%= bit[i].culpable%></td>
+                            </tr>
+                            <% } %>
+                        <% } %>
                 </tbody>
             </table>
         </div>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Plus - Ficha </title>
+    <%- include('partials/head') %>
+</head>
+
+<body>
+    <%- include('partials/navigation') %>
+
+    <div class="container">
+        <% let a='/reserva/' + idd %>
+            <a href=<%=a %>>
+                <button type="button" id="crear" class="btn btn-success">
+                    Volver
+                </button>
+            </a>
+            <p class="h2">Seleccione su tratamiento </p>
+            <table class="table table-light table-striped">
+                <tr>
+                    <th> Tratamiento</th>
+                    <th> </th>
+                    <th> Precio </th>
+                    <th> Reservar </th>
+                </tr>
+                <% for(let i=0; i < datos.length; i++) { %>
+                <tr>
+                    <td colspan="2">
+                        <%= datos[i].nombre%>
+                    </td>
+                    <td>
+                        <%= datos[i].precio%>
+                    </td>
+                    <td >
+                        <% let x='/reserva/' + idd + '/' + odo + '/' + datos[i].id %>
+                        <form action= "<%= x %>" method="post"> 
+                            <input type="date" name="fecha">
+                            <input type="time" name="hora">
+                                <button type="submit" class="btn btn-success">
+                                     Reservar
+                                </button>
+                        </form>
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+    </div>
+    <%- include('partials/mensajes') %>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<%- include('../partials/barramenu') %>
+<div class="container">
+    <div class="mx-auto col-sm-8 main-section" id="myTab" role="tablist">
+        <ul class="nav nav-tabs justify-content-end">
+            <li class="nav-item">
+            <a class="nav-link active" id="list-tab" data-toggle="tab" href="/Gpaciente" role="tab" aria-controls="list" aria-selected="false">Lista</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" id="form-tab" data-toggle="tab" href="/Rpaciente" role="tab" aria-controls="form" aria-selected="true">Registrar</a>				   	
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Formulario</h4>
+                    </div>
+                    <div class="card-body">
+
+                        <form class="formulario" action="/gpaciente/modificar" method="post">
+                            <input type="hidden" name="Olduser" value=<%= datos[0].user %>>
+                            <input class="form-control" type="text" name="user" id="usuario" required value=<%= datos[0].user %>>
+                            <input class="form-control" type="text" name="nombre" id="nombre" required value=<%= datos[0].nombre %>>
+                            <input class="form-control" type="number" name="edad" id="edad" required value=<%= datos[0].edad %>>
+                            <input class="form-control" type="text" name="sexo" id="sexo" required value=<%= datos[0].sexo %>>
+                            <input class="form-control" type="date" name="fechaNac" id="fechaNac" required value=<%= datos[0].fechaNac %>>
+                            <input class="form-control" type="email" name="correo" id="correo" required value=<%= datos[0].correo %>>
+                            <select id='sel-ocupacion' class="form-select" aria-label="ocupacion" name="idOcupacion" required>
+                                <% for (let i=0; i < ocupacion.length; i++) { %>
+                                    <option value=<%= ocupacion[i].id%> > <%= ocupacion[i].nombre%> </option>
+                                <% } %>
+                                </select>
+                            <input class="form-control" type="password" placeholder="Contraseña" name="contra" id="contra" required>
+                            <input class="form-control" type="number" name="telefono" id="telefono" required value=<%= datos[0].telefono %>>
+                            <br>
+                            <div class="col-lg-12 text-center">
+                                <input type="submit" class="btn btn-success" value="Guardar Cambios">
+                                <input type="reset" class="btn btn-secondary" 
+                                value="Limpiar">
+                                <a href="/gpaciente">
+                                    <input type="button" class="btn btn-secondary" value="Volver">                                 
+                                </a>                             
+                            </div>
+    
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/mensajes') %>

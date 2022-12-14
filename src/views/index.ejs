@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> DENTAL PLUS </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!--custom css-->
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <%- include('partials/navigation') %>
+
+  <body>
+    
+    <header class="header" id="home">
+        
+        <div class="contenedor head">
+            <h1 class="titulo">Bienvenido a la Clínica DENTAL PLUS</h1>
+            <p class="copy">Cuidamos tu sonrisa y la de tu familia.</p>
+        </div>
+        
+    </header>
+    <main>
+        <section class="services contenedor" id="servicios">
+            <h2 class="subtitulo">Nuestros servicios</h2>
+            <div class="contenedor-servicio">
+                <img src="img/checklist.svg" alt="">
+                <div class="checklist-servicio">
+                    <div class="service">
+                        <h3 class="n-service"><span class="number">1</span>Blanqueamientos</h3>
+                        <h3 class="n-service"><span class="number">2</span>Ortodoncia</h3>
+                        <h3 class="n-service"><span class="number">3</span>Cirugía</h3>
+                        <h3 class="n-service"><span class="number">4</span>Periodoncia</h3>
+                        <h3 class="n-service"><span class="number">5</span>Implantes</h3>
+                        <h3 class="n-service"><span class="number">6</span>Prótesis</h3>
+                        <h3 class="n-service"><span class="number">7</span>Endodoncia</h3>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="gallery" id="galeria">
+            <div class="contenedor">
+                <h2 class="subtitulo">Galería</h2>
+                <div class="contenedor-galeria">
+                    <img src="img/uno.jpg" class="img-galeria" alt="">
+                    <img src="img/dos.jpg" class="img-galeria" alt="">
+                    <img src="img/tres.jpg" class="img-galeria" alt="">
+                    <img src="img/cuatro.jpg" class="img-galeria" alt="">
+                    <img src="img/cinco.jpg" class="img-galeria" alt="">
+                    <img src="img/seis.jpg" class="img-galeria" alt="">
+                </div>
+            </div>
+        </section>
+
+        <section class="contacto" id="contacto">
+            <div class="contenedor">
+                <h2 class="subtitulo">Contacto</h2>
+                <p class="copy"> Telf. 70017150 - 60030488 </p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/menu.js"></script>
+    <script src="js/lightbox.js"></script>
+</body>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

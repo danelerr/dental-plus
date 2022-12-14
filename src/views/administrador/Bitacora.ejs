@@ -1,0 +1,22 @@
+<%- include('../partials/barramenu') %>
+<div class=" mx-auto ">
+<h3> BITACORA </h3>
+            <table class="table table-borderer table-hover" id="listaProductos" style="width:715px">
+                <thead>
+                    <th scope="col">#</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Accion</th>
+                        <th scope="col">Culpable</th>
+                </thead>
+                <tbody>
+                    <% for (let i=0; i < Bitacora.length; i++) { %>
+                    <tr>
+                        <td scope="col"><%= Bitacora[i].id%></td>
+                        <td scope="col"><%= Bitacora[i].fecha%></td>
+                        <td scope="col"><%= Bitacora[i].accion%></td>
+                        <td scope="col"><%= Bitacora[i].culpable%></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>

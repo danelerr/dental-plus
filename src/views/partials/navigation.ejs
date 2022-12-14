@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="img/Logo.png" alt="" width="30" height="24"  class="d-inline-block align-text-top">
+            Clinica Dental Plus
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <% if (user != undefined) { %>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <% if(VerP) { %> <!-- Paciente -->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/perfil/Agenda">Agendar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/perfil/Tratamientos">Tratamientos</a>
+                </li>
+                <% } %>
+                <% if(VerO) { %> <!-- odonto -->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/perfil/Gpaciente">Pacientes</a>
+                </li>
+                <% } %>
+                <% if(VerO) { %><!-- Administrador -->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/perfil/Godonto">Odontologos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/perfil/Gpaciente">Pacientes</a>
+                </li>
+                <% } %>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/perfil/settings">Configuraciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/cerrar">Cerrar Sesion</a>
+                </li>
+            </ul>
+        </div>
+        <% } else { %>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="form">Registrarse</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login">Iniciar Sesión</a>
+                </li>
+            </ul>
+        </div>
+        <% } %>
+        
+    </div>
+</nav>

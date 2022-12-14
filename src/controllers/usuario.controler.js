@@ -221,3 +221,26 @@ export const entrar = async(req,res) => {
     console.log()
     res.render('administrador/Bitacora.ejs',{bit: bit})
 }
+
+
+export const EntrarHis = async(req,res)=>{
+    res.render('odontologo/HistorialB.ejs')
+}
+
+export const buscarHPacientes = async(req, res) => {
+    const search = req.query.search;
+    const [rows] = await pool.query('Select * from usuario,paciente where user = usuario');
+    let i = 0;
+    while (i < rows.length) {
+        if (rows[i].nombre.search(new RegExp(search, 'i')) === -1) {
+            rows.splice(i, 1);
+        } else {
+            i++;
+        }
+    }
+    res.render('odontologo/BHistorial.ejs', {datos: rows});
+}
+
+export const Historia = async(req,res) =>{
+    res.render('odontologo/Historial.ejs')
+}

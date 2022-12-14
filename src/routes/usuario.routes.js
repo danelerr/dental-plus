@@ -25,7 +25,10 @@ import { insertarUsuario,
     buscarPacientes,
     buscarOdontologos,
     EntrarBitacora,
-    entrar
+    entrar,
+    EntrarHis,
+    buscarHPacientes,
+    Historia
 } from "../controllers/usuario.controler.js";
 
 
@@ -68,6 +71,9 @@ router.get('/bpaciente', logeadoE, buscarPacientes);
 
 router.post('/buscar',logeadoA,entrar)
 router.get('/Bitacora',logeadoA,EntrarBitacora)
+router.get('/Historias',logeadoE,EntrarHis)
+router.get('/HistoriasB',logeadoE,buscarHPacientes)
+router.get('/Hpaciente',Historia)
 
 
 export default router;

@@ -59,7 +59,15 @@ busqueda.Paciente = async(nombre) => {
         console.log(e)
     }
 }
-
+busqueda.PacienteEsp = async(nombre) => {
+    try {
+        console.log(nombre)
+        const Result =  await pool.query('Select date_format(fechaNac, "%d-%m-%Y %T")as fecha,user,correo,nombre,edad,sexo,telefono from usuario,paciente where user=usuario and user = ?', nombre);
+        return Result
+    } catch (e) {
+        console.log(e)
+    }
+}
 
 /////////////// ODONTOLOGO ///////////////////////////
 busqueda.Odonto = async(nombre) => {

@@ -73,7 +73,7 @@ router.post('/buscar',logeadoA,entrar)
 router.get('/Bitacora',logeadoA,EntrarBitacora)
 router.get('/Historias',logeadoE,EntrarHis)
 router.get('/HistoriasB',logeadoE,buscarHPacientes)
-router.get('/Hpaciente',Historia)
+router.post('/Hpaciente',logeadoE,Historia)
 
 
 export default router;

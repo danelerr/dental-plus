@@ -6,52 +6,180 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <meta name="viewport" content="witdth=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style1.css">
 </head>
 <body>
+    <%- include('../partials/barramenu') %>
+    <div class="block-element">Datos Personales  </div>
+    <center>
     <form action="">
         <label for="nombre_paciente">
             <span>Paciente:</span>
-            <input type="text" id="nombre_paciente" placeholder="Nombre" required/>
+            <input  value="<%= datos.nombre %>">
         </label>
         <label for="sexo">
             <span>Sexo:</span>
             <select name="sexo" id="">
-                <option value="">Femenino </option>
-                <option value="">Masculino </option>
+                <% if( datos.sexo == 'M') { %>
+                    <option value="">Masculino </option>
+                    <% } %>
+                    <% if(datos.sexo == 'F') { %>
+                        <option value="">Femenino </option>
+                    <% } %>
             </select>
         </label>
         <label for="telefono">
             <span>Telefono:</span>
-            <input type="text" id="telefono" placeholder="Escribe tu numero" required/>    
+            <input type="text" id="telefono" value=<%= datos.telefono %>>    
         </label>
         <label for="fecha">
             <span>Fecha:</span>
-            <input type="date" id="fecha" />
+            <input type="text" value=<%= datos.fecha %>>
         </label>
+        <br><br/>
         <label for="edad">
             <span>Edad:</span>
-            <input type="text" id="edad" placeholder="Escribe tu edad" required/>    
+            <input type="text" id="edad" value=<%= datos.edad %> required/>    
         </label>
-        <label for="pais">
-            <span>Pais:</span>
-            <input type="text" id="pais" placeholder="De que pais eres" required/>    
+        <br><br/>
+        </center>
+        <p class="block-element">Cuestionario Pre-Clinico</p>
         </label>
-        <label for="afiliado">
-            <span>Afiliado:</span>
-            <select name="afiliado" id="">
+    <xd>
+        <label for="tratamiento-odonto">
+            <span>¿Cuándo fue la última vez que recibio tratamiento odóntologico?</span>
+            <input type="text" id="trat" placeholder="¿Hace cuánto tiempo?" required/>    
+        </label>
+        <br><br/>
+        <label for="tratamiento-medico">
+            <span>¿Está en tratamiento médico?</span>
+            <select name="tratamiento-medico" id="">
                 <option value="">SI </option>
                 <option value="">NO </option>
-            </select>
+            </select>    
         </label>
-        <label for="Cual">
-            <span>¿Cuál?</span>
-            <input type="text" id="Cual" placeholder="En donde estas afiliado" required/>    
+        <label for="causa">
+            <span>¿Por qué causa?</span>
+            <input type="text" id="trat" placeholder="¿enfermedad?" />    
         </label>
-        <main>
-            <title>Cuestionario Pre Clinico</title>
-        </main>
-
-        <input type="submit" />
+        <br><br/>
+        <label for="medicamentos">
+            <span>¿Toma medicamentos?</span>
+            <select name="medicamentos" id="">
+                <option value="">SI </option>
+                <option value="">NO </option>
+            </select>    
+        </label>
+        <label for="cuales">
+            <span>¿Cuáles?</span>
+            <input type="text" id="cuale" />    
+        </label>
+        <label for="hemorragia">
+            <span>¿Tuvo hemorragias?</span>
+            <select name="hemorragia" id="">
+                <option value="">SI </option>
+                <option value="">NO </option>
+            </select>    
+        </label>
+        <br><br/>
+        <label for="operaciones">
+            <span>¿Fue operado los últimos diez años?</span>
+            <select name="operaciones" id="">
+                <option value="">SI </option>
+                <option value="">NO </option>
+            </select>    
+        </label>
+        <label for="causas">
+            <span>¿Por qué causa?</span>
+            <input type="text" id="causas" />
+        </label>
+        <br><br/>
+        <label for="transfucion">
+            <span>¿Recibio transfución de sangre o derivados?</span>
+            <select name="transfucion" id="">
+                <option value="">SI </option>
+                <option value="">NO </option>
+            </select>    
+        </label>
+        <label for="tuberculosis">
+            <span>¿Tiene Tuberculósis?</span>
+            <select name="tuberculosis" id="">
+                <option value="">SI </option>
+                <option value="">NO </option>
+            </select>    
+        </label>
+        <br><br/>
+        <label for="alergia">
+            <span>¿Tiene Alergias?</span>
+            <select name="alergia" id="">
+                <option value="">SI </option>
+                <option value="">NO </option>
+            </select>    
+        </label>
+        <label for="cuall">
+            <span>¿Cuáles?</span>
+            <input type="text" id="cuall" />    
+        </label>
+        <label for="diabetes">
+            <span>¿Tiene Diabetes?</span>
+            <select name="diabetes" id="">
+                <option value="">SI </option>
+                <option value="">NO </option>
+            </select>    
+        </label>
+        <br><br/>
+        <label for="dolencia">
+            <span>¿Dolencias cardiacas?</span>
+            <select name="dolencia" id="">
+                <option value="">SI </option>
+                <option value="">NO </option>
+            </select>    
+        </label>
+        <label for="hemofilia">
+            <span>¿Hemofilia?</span>
+            <select name="hemofilia" id="">
+                <option value="">SI </option>
+                <option value="">NO </option>
+            </select>    
+        </label>
+        <label for="neurologico">
+            <span>¿Problemas neurologicos?</span>
+            <select name="neurologico" id="">
+                <option value="">SI </option>
+                <option value="">NO </option>
+            </select>    
+        </label>
+        <br><br/>
+        <label for="neumonia">
+            <span>¿Neumonia?</span>
+            <select name="neumonia" id="">
+                <option value="">SI </option>
+                <option value="">NO </option>
+            </select>    
+        </label>
+        <label for="hipertención">
+            <span>¿Hipertención?</span>
+            <select name="hipertención" id="">
+                <option value="">SI </option>
+                <option value="">NO </option>
+            </select>    
+        </label>
+        <label for="embarazo">
+            <span>¿Está embarazada?</span>
+            <select name="embarazo" id="">
+                <option value="">SI </option>
+                <option value="">NO </option>
+            </select>    
+        </label>
+        <br><br/>
+        <label for="observacion">
+            <span>Observaciones</span>
+        <textarea name="obs" placeholder="Escriba un dato importante"></textarea>
+        <br><br/>
+    </xd>
+        <center>
+        <button type="submit">Cancelar</button>
+        <button type="submit">Guardar</button>
+        </center>    
 </body>
 </html>

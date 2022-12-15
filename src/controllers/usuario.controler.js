@@ -218,7 +218,6 @@ export const entrar = async(req,res) => {
     const Inicio = req.body.Inicio
     const Fin = req.body.Fin
     const [bit] = await pool.query('Select id,date_format(fecha, "%d-%m-%Y %T")as fecha ,accion,culpable  From bitacora where fecha BETWEEN "'+Inicio+'" AND "'+Fin+'" ORDER BY id desc')
-    console.log()
     res.render('administrador/Bitacora.ejs',{bit: bit})
 }
 
@@ -242,5 +241,7 @@ export const buscarHPacientes = async(req, res) => {
 }
 
 export const Historia = async(req,res) =>{
-    res.render('odontologo/Historial.ejs')
+    const [rows] = await busqueda.PacienteEsp(req.body.user)
+    console.log(rows)
+    res.render('odontologo/Historial.ejs',{ datos: rows[0] })
 }

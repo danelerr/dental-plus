@@ -28,7 +28,9 @@ import { insertarUsuario,
     entrar,
     EntrarHis,
     buscarHPacientes,
-    Historia
+    Historia,
+    ModiCuest,
+    Histrata
 } from "../controllers/usuario.controler.js";
 
 
@@ -74,6 +76,8 @@ router.get('/Bitacora',logeadoA,EntrarBitacora)
 router.get('/Historias',logeadoE,EntrarHis)
 router.get('/HistoriasB',logeadoE,buscarHPacientes)
 router.post('/Hpaciente',logeadoE,Historia)
+router.post('/MCues',logeadoE,ModiCuest)
+router.post('/Histrata',logeadoE,Histrata)
 
 
 export default router;

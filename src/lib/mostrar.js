@@ -45,4 +45,13 @@ Listar.Bitacora = async() =>{
     }
 }
 
+///////////Historial de tratamientos/////////select * from historia where usuarioP =
+Listar.HT = async(user) =>{
+    try {
+        const Result = await pool.query('select * from historia where usuarioP = ?',user)
+        return Result
+    } catch (error) {
+        console.log(error)
+    }
+}
 export default Listar;

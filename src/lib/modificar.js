@@ -30,4 +30,9 @@ Modificar.Odonto = async( Olduser,user, nombre, edad, fechaNac, correo, idConsul
     await pool.query('UPDATE odontologo SET ? WHERE usuario = ?', [DatosO,usuario])
 }
 
+Modificar.cuest = async( req )=>{
+    console.log(req)
+    await pool.query('UPDATE cuestionario SET ? WHERE id = ?', [req,req.id])
+}
+
 export default Modificar;

@@ -5,6 +5,7 @@ import Eliminar from "../lib/eliminar.js";
 import Modificar from "../lib/modificar.js";
 import busqueda from "../lib/busquedas.js";
 import helprs from "../lib/helpers.js"
+import Listar from "../lib/mostrar.js";
 
 
 export const insertarUsuario = async (req, res) => {
@@ -242,6 +243,15 @@ export const buscarHPacientes = async(req, res) => {
 
 export const Historia = async(req,res) =>{
     const [rows] = await busqueda.PacienteEsp(req.body.user)
-    console.log(rows)
     res.render('odontologo/Historial.ejs',{ datos: rows[0] })
+}
+
+export const ModiCuest = async(req,res) =>{
+    await Modificar.cuest(req.body)
+    res.redirect('/Historias')
+}
+export const Histrata = async(req,res) =>{
+    const [rows] = await Listar.HT(req.body.id)
+    console.log(rows)
+    res.render('odontologo/HTratamientos.ejs',{ datos: rows })
 }

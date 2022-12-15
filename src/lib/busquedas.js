@@ -61,8 +61,7 @@ busqueda.Paciente = async(nombre) => {
 }
 busqueda.PacienteEsp = async(nombre) => {
     try {
-        console.log(nombre)
-        const Result =  await pool.query('Select date_format(fechaNac, "%d-%m-%Y %T")as fecha,user,correo,nombre,edad,sexo,telefono from usuario,paciente where user=usuario and user = ?', nombre);
+        const Result =  await pool.query('Select date_format(fechaNac, "%d-%m-%Y %T")as fecha,user,correo,nombre,edad,sexo,telefono,cuestionario.* from usuario,paciente,cuestionario where user=paciente.usuario and paciente.usuario=cuestionario.usuario and usuario.user = ?', nombre);
         return Result
     } catch (e) {
         console.log(e)
@@ -111,4 +110,8 @@ busqueda.Roles = async() => {
         console.log(e)
     }
 }
+
+
+
+
 export default busqueda;

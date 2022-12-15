@@ -1,0 +1,27 @@
+<%- include('../partials/barramenu') %>
+<div class="container">
+    <div class="row">
+        <div class="jumbotron ">
+            <h1>
+                Historial Tratamientos
+            </h1>
+       </div>
+    </div>
+            <table class="table table-borderer table-hover" id="listaProductos" style="width:715px">
+                <thead>
+                    <th scope="col">#</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Informacion</th>
+                </thead>
+                <tbody>
+                    
+                    <% for (let i=0; i < datos.length; i++) { %>
+                    <tr>
+                        <td scope="col"><%= i+1 %></td>
+                        <td scope="col"><%= datos[i].descripcion%></td>
+                        <td scope="col"><%= datos[i].informacion%></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>

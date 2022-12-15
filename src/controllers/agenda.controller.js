@@ -24,3 +24,16 @@ export const eliminarFicha = async(req, res) => {
     await pool.query('delete from ficha where id = ?', [idficha]);
     res.redirect('/misfichas');
 }
+
+
+
+export const fichasViewOdonto = async(req, res) => {
+    try {
+        const [rows] = await pool.query('select ficha.id, date_format(ficha.fechaCita, "%d-%m-%Y") as fechaCita, horaCita, especialidad.nombre as especialidadNombre, tratamiento.nombre as nombreTratamiento, usuario.nombre as pacient from ficha, usuario, tratamiento, especialidad where (ficha.usuarioOdonto = ?) and (tratamiento.id = idTratamiento) and (usuarioP = usuario.user) and (especialidad.id = tratamiento.idEspecialidad); ', [req.user[0].user]);
+        res.render('odontologo/listafichas.ejs', {datos: rows});
+    } catch (error) {
+        return res.status(500).json({
+            mensaje: "algo salio mal",
+        });
+    }
+}

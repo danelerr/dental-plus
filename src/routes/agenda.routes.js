@@ -4,7 +4,8 @@ import { Router } from "express";
 import {
     getAgenda,
     fichasView,
-    eliminarFicha
+    eliminarFicha,
+    fichasViewOdonto
 } from '../controllers/agenda.controller.js'
 
 import { 
@@ -18,5 +19,6 @@ const router = Router();
 router.get('/agenda', logeadoO, getAgenda);
 router.get('/misfichas', logeadoP, fichasView);
 router.post('/misfichas/eliminar', logeado, eliminarFicha);
+router.get('/listafichas', logeadoO, fichasViewOdonto);
 
 export default router;

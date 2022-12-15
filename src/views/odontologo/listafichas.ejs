@@ -30,6 +30,8 @@
                                 <th scope="col"> Especialidad </th>
                                 <th scope="col"> Tratamiento </th>
                                 <th scope="col">nombre paciente </th>
+                                <th scope="col">Estado </th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -41,11 +43,22 @@
                                     <td scope="col"><%= datos[i].especialidadNombre %></td>
                                     <td scope="col"><%= datos[i].nombreTratamiento %></td>
                                     <td scope="col"><%= datos[i].pacient %></td>
-                                    <td scope="row p-3">
+                                    <td scope="col"><%= datos[i].detalle %></td>
+                                    <td scope="row p-3 al">
                                     <form action="/misfichas/eliminar" method="post">
-                                        <input type="hidden" name="idficha" value=<%= datos[i].id %>>
-                                        <button class="btn btn-outline-danger bi bi-trash" type="submit" ></button>
+                                        <input type="hidden" name="idficha" value= <%= datos[i].id %> >
+                                        <button class="btn btn-outline-danger bi bi-trash" type="submit" > Eliminar </button>
                                     </form>
+                                    <form action="/setestado" method="post">                            
+                                        <input type="hidden" name="idficha" value=<%= datos[i].id %> >
+                                        <input type="hidden" name="estadoRes" value="2">
+                                        <button class="btn btn-success" type="submit">Marcar como completado</button>
+                                    </form> 
+                                    <form action="/setestado" method="post">                            
+                                        <input type="hidden" name="idficha" value= <%= datos[i].id %> >
+                                        <input type="hidden" name="estadoRes" value="3">
+                                        <button class="btn btn-secondary" type="submit">Marcar como abandonado</button>
+                                    </form> 
                                     </td>
                                 </tr>
                                 <% } %>

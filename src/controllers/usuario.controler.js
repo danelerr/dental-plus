@@ -6,7 +6,6 @@ import Modificar from "../lib/modificar.js";
 import busqueda from "../lib/busquedas.js";
 import helprs from "../lib/helpers.js"
 import Listar from "../lib/mostrar.js";
-import moment from 'moment';
 
 
 export const insertarUsuario = async (req, res) => {
@@ -267,6 +266,4 @@ export const Atencion = async(req,res) =>{
     await pool.query('INSERT INTO atencion(horaInicio, horaFin, idFicha, idEstadoA, Preciototal) VALUES (?,?,?,?,?)',datos)
     const [row] = await busqueda.PacienteEsp(usuario[0].usuarioP)
     res.render('odontologo/Historial.ejs',{ datos: row[0] })
- 
-    
 }

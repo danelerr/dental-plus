@@ -6,6 +6,7 @@ import indexRoutes from "./routes/index.routes.js";
 import usuarioRoutes from "./routes/usuario.routes.js";
 import reservaRoutes from './routes/reserva.routes.js';
 import agendaRoutes from './routes/agenda.routes.js';
+import reportesRoutes from './routes/reportes.routes.js';
 
 import {dirname, join} from 'path';
 import {fileURLToPath} from 'url';
@@ -88,4 +89,5 @@ app.use(employeesRoutes);
 app.use(usuarioRoutes);
 app.use(reservaRoutes);
 app.use(agendaRoutes);
+app.use(reportesRoutes);
 export default app;

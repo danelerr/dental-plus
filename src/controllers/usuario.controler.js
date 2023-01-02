@@ -20,8 +20,8 @@ export const addUser = passport.authenticate('local.regist', {
 })
 
 export const entrarHome = (req, res) => {
-    res.render('usuario/home.ejs'); //perfil
-}
+    res.render('usuario/home.ejs'); //perfil 
+} 
 
 ////////////////////// SERVICIOS ////////////////////
 export const entrarGpaciente = (req, res) => {
@@ -180,7 +180,6 @@ export const EliminarPaciente =  async (req,res)=>{
 }
 
 export const buscarPacientes = async(req, res) => {
-    console.log('la query es')
     const search = req.query.search;
      const [rows] = await pool.query('Select * from usuario,paciente where user = usuario');
     let i = 0;

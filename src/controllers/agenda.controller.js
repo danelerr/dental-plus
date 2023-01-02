@@ -1,7 +1,8 @@
 import { pool } from "../db.js";
 
 export const getAgenda = async(req, res) => { 
-    res.render('odontologo/calendario.ejs');
+    const [rows] = await pool.query('select date_format(ficha.fechaCita, "%Y") as anioCita, date_format(ficha.fechaCita, "%m") as mesCita, date_format(ficha.fechaCita, "%d") as diaCita, especialidad.nombre as especialidadNombre, usuario.nombre as pacient from ficha, usuario, tratamiento, especialidad, estadoAtencion where (ficha.usuarioOdonto = ?) and (tratamiento.id = idTratamiento) and (usuarioP = usuario.user) and (especialidad.id = tratamiento.idEspecialidad) and (idEstadoRes = estadoAtencion.id); ', [req.user[0].user])
+    res.render('odontologo/calendario.ejs', {datos:rows});
 }
 
 

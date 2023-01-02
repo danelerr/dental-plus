@@ -39,13 +39,14 @@ export const renderVistaReportes = (req, res) => {
 };
 
 export const generarPDF = async (req, res) => {
-  res.send('exito');
   const valor = parseInt(req.params.valor);
   let topdf = {};
   if (valor == 1) {
     topdf.head = ['user', 'nombre', 'correo', 'edad', 'fecha de nacimiento', 'ocupacion'];
-    const [rows] = await pool.query('select user, usuario.nombre, correo, edad, fechaNac, ocupacion.nombre from usuario, ocupacion where ocupacion.id = idOcupacion;');
+    const [rows] = await pool.query('select user, usuario.nombre, correo, edad, fechaNac, ocupacion.nombre as ocu from usuario, ocupacion where ocupacion.id = idOcupacion;');
     topdf.body = rows;
+    topdf.file = 'Reporte de usuarios.pdf';
+    topdf.titulo = 'Reporte - Usuarios del sistema';
   } else if (valor == 2) {
 
   } else if (valor == 3) {

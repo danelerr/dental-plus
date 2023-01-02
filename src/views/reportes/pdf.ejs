@@ -9,35 +9,26 @@
 </head>
 
 <body>
+    <!-- style="display: none;" -->
     <table id="tablita">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Country</th>
+                <% for (let i=0; i < head.length; i++) { %>
+                <th> <%= head[i] %> </th>
+                <% } %>
             </tr>
         </thead>
         <tbody>
+            <% for (let i=0; i < body.length; i++) { %>
             <tr>
-                <td>Gautam</td>
-                <td>25</td>
-                <td>India</td>
+                <td><%= body[i].user %></td>
+                <td><%= body[i].nombre %></td>
+                <td><%= body[i].correo %></td>
+                <td><%= body[i].edad %></td>
+                <td><%= body[i].fechaNac %></td>
+                <td><%= body[i].ocu %></td>
             </tr>
-            <tr>
-                <td>Kane</td>
-                <td>25</td>
-                <td>New Zealand</td>
-            </tr>
-            <tr>
-                <td>Harry</td>
-                <td>25</td>
-                <td>England</td>
-            </tr>
-            <tr>
-                <td>Jim</td>
-                <td>25</td>
-                <td>Canada</td>
-            </tr>
+            <% } %>
         </tbody>
     </table>
     <button id="btn">generar</button>
@@ -71,7 +62,7 @@
             //     lineWidth: 1,
             // },
             didDrawPage: function (data) {
-                doc.text('Report', data.settings.margin.left + 15, 22)
+                doc.text("<%= titulo %>", data.settings.margin.left + 15, 22)
                 var str = 'Page ' + doc.internal.getNumberOfPages()
                 if (typeof doc.putTotalPages === 'function') {
                     str = str + ' of ' + totalPagesExp
@@ -89,15 +80,10 @@
         if (typeof doc.putTotalPages === 'function') {
             doc.putTotalPages(totalPagesExp)
         }
-        doc.save('dex.pdf');
+        doc.save("<%= file %>");
+        window.location.href = '/reportes';
     }
-    document.getElementById('btn').addEventListener('click', generar);
-
-
-
-
-
-
+    window.addEventListener("load", generar);
 </script>
 
 </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Dental Plus - Registrarse </title>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/navigation') %>
+
+  <div class="contenedor col-md-4 mx-auto">
+    <img src="img/logo2.jpg" class="avatar" alt="Avatar Image">
+    <div class= "form sign-up-contenedor">
+        <h1>Crear una cuenta</h1>
+        <form class="formulario2" action="/form" method="post">
+            <input class="form-control" type="text" placeholder="username" name="user"  required>
+            <input class="form-control" type="text" placeholder="Nombre Completo" name="nombre"  required>
+            <input class="form-control" type="number" placeholder="Edad" name="edad"  required>
+            <input class="form-control" type="text" placeholder="Sexo" name="sexo"  required>
+            <input class="form-control" type="text" placeholder="Fecha de Nacimiento" name="fechaNac"  required>
+            <input class="form-control" type="email" placeholder="Correo Electrónico" name="correo"  required>
+            <label for=""></label>
+            <p>Ocupacion</p>
+            <select id='sel-ocupacion' class="form-select" aria-label="Ocupacion" name="ocupation" required>
+              <% for (let i=0; i < datos.length; i++) { %>
+                <option value=<%= datos[i].id%> > <%= datos[i].nombre%> </option>
+              <% } %>
+            </select>
+
+
+            <input class="form-control" type="password" placeholder="Contraseña" name="contra" required>
+            <input class="form-control" type="number" placeholder="Teléfono" name="telefono" required>
+            <input type="submit" value="Registrarse">
+            <a class = "ok-account" href="/login">¿Ya tiene una cuenta?</a>
+        </form>
+    </div>
+</div>
+  <%- include('../partials/mensajes') %>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

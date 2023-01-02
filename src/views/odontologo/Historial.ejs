@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="viewport" content="witdth=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style1.css">
+</head>
+<body>
+    <%- include('../partials/barramenu') %>
+    <div class="block-element">Datos Personales  </div>
+    <center>
+    <form action="">
+        <label for="nombre_paciente">
+            <span>Paciente:</span>
+            <input  value="<%= datos.nombre %>">
+        </label>
+        <label for="sexo">
+            <span>Sexo:</span>
+            <select name="sexo" id="">
+                <% if( datos.sexo == 'M') { %>
+                    <option value="">Masculino </option>
+                    <% } %>
+                    <% if(datos.sexo == 'F') { %>
+                        <option value="">Femenino </option>
+                    <% } %>
+            </select>
+        </label>
+        <label for="telefono">
+            <span>Telefono:</span>
+            <input type="text" id="telefono" value=<%= datos.telefono %>>    
+        </label>
+        <label for="fecha">
+            <span>Fecha:</span>
+            <input type="text" value=<%= datos.fecha %>>
+        </label>
+        <br><br/>
+        <label for="edad">
+            <span>Edad:</span>
+            <input type="text" id="edad" value=<%= datos.edad %> required/>    
+        </label>
+        <br><br/>
+    </center>
+    <p class="block-element">Cuestionario Pre-Clinico</p>
+</label>
+</form>
+<form action="/MCues" method="post">
+    <fieldset>
+        <input type="hidden" name="id" value=<%= datos.id %>>
+        <label for="tratamiento-odonto">
+            <span>¿Cuándo fue la última vez que recibio tratamiento odóntologico?</span>
+            <input type="text" name="uto" value="<%= datos.uto %>" required/>    
+        </label>
+        <br><br/>
+        <label for="tratamiento-medico">
+            <span>¿Está en tratamiento médico?</span>
+            <select name="tm">
+                <% if( datos.tm == 'NO') { %>
+                    <option value="NO">NO </option>
+                    <option value="SI">SI </option>
+                    <% }else{ %>
+                    <option value="SI">SI </option>
+                    <option value="NO">NO </option>
+                    <% } %>                
+            </select>    
+        </label>
+        <label for="causa">
+            <span>¿Por qué causa?</span>
+            <input type="text" name="ct" value="<%= datos.ct %>" />    
+        </label>
+        <br><br/>
+        <label for="medicamentos">
+            <span>¿Toma medicamentos?</span>
+            <select name="m" id="">
+                <% if( datos.m == 'NO') { %>
+                    <option value="NO">NO </option>
+                    <option value="SI">SI </option>
+                    <% }else{ %>
+                    <option value="SI">SI </option>
+                    <option value="NO">NO </option>
+                    <% } %>   
+            </select>    
+        </label>
+        <label for="cuales">
+            <span>¿Cuáles?</span>
+            <input type="text" name="cm" value="<%= datos.cm %>" id="" />    
+        </label>
+        <label for="hemorragia">
+            <span>¿Tuvo hemorragias?</span>
+            <select name="h">
+                <% if( datos.h == 'NO') { %>
+                    <option value="NO">NO </option>
+                    <option value="SI">SI </option>
+                    <% }else{ %>
+                    <option value="SI">SI </option>
+                    <option value="NO">NO </option>
+                    <% } %>   
+            </select>    
+        </label>
+        <br><br/>
+        <label for="operaciones">
+            <span>¿Fue operado los últimos diez años?</span>
+            <select name="op10">
+                <% if( datos.op10 == 'NO') { %>
+                    <option value="NO">NO </option>
+                    <option value="SI">SI </option>
+                    <% }else{ %>
+                    <option value="SI">SI </option>
+                    <option value="NO">NO </option>
+                    <% } %>   
+            </select>    
+        </label>
+        <label for="causas">
+            <span>¿Por qué causa?</span>
+            <input type="text" name="pq" value="<%= datos.pq %>" id="" />
+        </label>
+        <br><br/>
+        <label for="transfucion">
+            <span>¿Recibio transfución de sangre o derivados?</span>
+            <select name="rts">
+                <% if( datos.rts == 'NO') { %>
+                    <option value="NO">NO </option>
+                    <option value="SI">SI </option>
+                    <% }else{ %>
+                    <option value="SI">SI </option>
+                    <option value="NO">NO </option>
+                    <% } %>   
+            </select>    
+        </label>
+        <label for="tuberculosis">
+            <span>¿Tiene Tuberculósis?</span>
+            <select name="tt">
+                <% if( datos.tt == 'NO') { %>
+                    <option value="NO">NO </option>
+                    <option value="SI">SI </option>
+                    <% }else{ %>
+                    <option value="SI">SI </option>
+                    <option value="NO">NO </option>
+                    <% } %>   
+            </select>    
+        </label>
+        <br><br/>
+        <label for="alergia">
+            <span>¿Tiene Alergias?</span>
+            <select name="ta">
+                <% if( datos.ta == 'NO') { %>
+                    <option value="NO">NO </option>
+                    <option value="SI">SI </option>
+                    <% }else{ %>
+                    <option value="SI">SI </option>
+                    <option value="NO">NO </option>
+                    <% } %>   
+            </select>    
+        </label>
+        <label for="cuall">
+            <span>¿Cuáles?</span>
+            <input type="text" name="ca" value="<%= datos.ca %>" id="" />    
+        </label>
+        <label for="diabetes">
+            <span>¿Tiene Diabetes?</span>
+            <select name="td" id="">
+                <% if( datos.td == 'NO') { %>
+                    <option value="NO">NO </option>
+                    <option value="SI">SI </option>
+                    <% }else{ %>
+                    <option value="SI">SI </option>
+                    <option value="NO">NO </option>
+                    <% } %>   
+            </select>    
+        </label>
+        <br><br/>
+        <label for="dolencia">
+            <span>¿Dolencias cardiacas?</span>
+            <select name="dc" id="">
+                <% if( datos.dc == 'NO') { %>
+                    <option value="NO">NO </option>
+                    <option value="SI">SI </option>
+                    <% }else{ %>
+                    <option value="SI">SI </option>
+                    <option value="NO">NO </option>
+                    <% } %>   
+            </select>    
+        </label>
+        <label for="hemofilia">
+            <span>¿Hemofilia?</span>
+            <select name="he" id="">
+                <% if( datos.he == 'NO') { %>
+                    <option value="NO">NO </option>
+                    <option value="SI">SI </option>
+                    <% }else{ %>
+                    <option value="SI">SI </option>
+                    <option value="NO">NO </option>
+                    <% } %>   
+            </select>    
+        </label>
+        <label for="neurologico">
+            <span>¿Problemas neurologicos?</span>
+            <select name="pn" id="">
+                <% if( datos.pn == 'NO') { %>
+                    <option value="NO">NO </option>
+                    <option value="SI">SI </option>
+                    <% }else{ %>
+                    <option value="SI">SI </option>
+                    <option value="NO">NO </option>
+                    <% } %>   
+            </select>    
+        </label>
+        <br><br/>
+        <label for="neumonia">
+            <span>¿Neumonia?</span>
+            <select name="n" id="">
+                <% if( datos.n == 'NO') { %>
+                    <option value="NO">NO </option>
+                    <option value="SI">SI </option>
+                    <% }else{ %>
+                    <option value="SI">SI </option>
+                    <option value="NO">NO </option>
+                    <% } %>   
+            </select>    
+        </label>
+        <label for="hipertención">
+            <span>¿Hipertención?</span>
+            <select name="hi" id="">
+                <% if( datos.hi == 'NO') { %>
+                    <option value="NO">NO </option>
+                    <option value="SI">SI </option>
+                    <% }else{ %>
+                    <option value="SI">SI </option>
+                    <option value="NO">NO </option>
+                    <% } %>   
+            </select>    
+        </label>
+        <label for="embarazo">
+            <span>¿Está embarazada?</span>
+            <select name="e" id="">
+                <% if( datos.e == 'NO') { %>
+                    <option value="NO">NO </option>
+                    <option value="SI">SI </option>
+                    <% }else{ %>
+                    <option value="SI">SI </option>
+                    <option value="NO">NO </option>
+                    <% } %>   
+            </select>    
+        </label>
+        <br><br/>
+        <label for="observacion">
+            <span>Observaciones</span>
+        <textarea name="obs" placeholder="<%= datos.obs %>"></textarea>
+        <br><br/>
+    </label>
+    
+        <center>
+            <a href="/home"><button type="submit">Cancelar</button></a>        
+        <input type="submit" value="Guardar" >
+        
+    </center> 
+</fieldset>   
+</form>
+<form action="/Histrata" method="post">
+    <input type="hidden" name="id" value=<%= datos.user %>>
+    <input type="submit" value="Tratamientos Hechos" >
+</form>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<%- include('../partials/barramenu') %>
+<div class="container">
+    <div class="row">
+        <div class="jumbotron ">
+            <h1>
+                Historiales
+            </h1>
+       </div>
+       
+        <div>
+            <form class="form-inline" action="/HistoriasB" method="get">
+                <div class="form-group">
+                    <input class="form-control" id="b" name="search" placeholder="Ingrese un nombre a buscar" type="text">
+                    <button type="submit" type="button" class="btn btn-primary"> Buscar <i class="bi bi-search"></i></button>
+                </div>
+               
+            </form>
+        </div> 
+               
+    </div> 
+</div> 
+
+<div class="container">
+    
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="userList" class="table table-bordered table-hover table-striped">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Usuario</th>
+                                <th scope="col">Nombre</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <% for (let i=0; i < pacientes.length; i++) { %>
+                                <tr>
+                                    <td scope="col"><%= i+1 %></td>
+                                    <td scope="col"><%= pacientes[i].user %></td>
+                                    <td scope="col"><%= pacientes[i].nombre%></td>
+                                    <td scope="row p-3">
+
+                                    <form action="/Hpaciente" method="post">                            
+                                        <input type="hidden" name="user" value=<%= pacientes[i].user %> >
+                                        <button class="btn btn-outline-primary bi bi-pencil" type="submit">Ver Historial</button>
+                                    </form>                           
+                                    </td>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        

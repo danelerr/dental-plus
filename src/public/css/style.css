@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url(../img/fondo2.jpg) no-repeat center top;
+  background-size: cover;
+  background-attachment: fixed;
+  backdrop-filter: blur(3px);
+  background-position:center;
+  background-color:rgba(0, 0, 0, 0.192);
+  background-blend-mode:darken;
+  font-family: sans-serif;
+  height: 130vh;
+}
+
+.contenedor {
+  width: auto;
+  height: auto;
+  background: rgba(0, 0, 0, 0.192);
+  color: #fff;
+  top: 55%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 60px 30px;
+}
+
+.form {
+  text-align: center;
+  width: 400px;
+  padding: 1rem;
+  background-color: #000;
+}
+
+.contenedor .avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+}
+
+.contenedor h1 {
+  margin: 0;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.contenedor label {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  display: block;
+}
+
+.contenedor input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/*SEÑALA SI HAY UN ERROR EN EL REGISTRO*/
+.form input[type="text"].error{
+  border: solid thin red;
+}
+
+.form input[type="email"].error{
+  border: solid thin red;
+}
+
+.form input[type="password"].error{
+  border: solid thin red;
+}
+
+.form input[type="number"].error{
+  border: solid thin red;
+}
+
+.contenedor input[type="text"], .contenedor input[type="password"] {
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.contenedor input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  background: #0445d3;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+}
+
+.contenedor input[type="submit"]:hover {
+  cursor: pointer;
+  background: #fffefa;
+  color: #000;
+}
+
+.contenedor a {
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 20px;
+  color: darkgrey;
+}
+
+.contenedor a:hover {
+  color: #fff;
+}
+
+/*NOTIFICACIÓN DE REGISTRO*/
+.notify {
+  width: 25%;
+  position: absolute;
+  top: 0;
+  padding: 1rem;
+  text-align: center;
+  color: #fff;
+  display: none;
+}
+
+.check_notify {
+  background-color: rgba(0, 128, 0, 0.384);
+}
+
+.check_notify.active {
+  display: block;
+}
+
+.error_notify {
+  background-color: rgba(255, 0, 0, 0.623);
+}
+
+.error_notify.active {
+  display: block;
+}

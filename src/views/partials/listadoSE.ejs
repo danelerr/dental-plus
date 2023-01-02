@@ -1,0 +1,35 @@
+<%- include('barramenu') %>
+<div class=" mx-auto ">
+<h3> LISTA DE SERVICIOS </h3>
+            <table class="table table-borderer table-hover" id="listaProductos" style="width:715px">
+                <thead>
+                    <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Tiempo</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col"></th>
+                </thead>
+                <tbody>
+                    <% for (let i=0; i < Servicios.length; i++) { %>
+                    <tr>
+                        <td scope="col"><%= i+1 %></td>
+                        <td scope="col"><%= Servicios[i].nombre%></td>
+                        <td scope="col"><%= Servicios[i].descripcion%></td>
+                        <td scope="col"><%= Servicios[i].tiempo%></td>
+                        <td scope="col"><%= Servicios[i].precio%></td>
+                        <td scope="row p-3">
+                        <form action="/servicio/delete" method="post">
+                            <input type="hidden" name="id" value=<%= Servicios[i].id%>>
+                            <button class="btn btn-outline-danger bi bi-trash" type="submit" ></button>
+                        </form>
+                        <form action="/Mservicio" method="post">                            
+                            <input type="hidden" name="idM" value=<%= Servicios[i].id%>>
+                            <button class="btn btn-outline-primary bi bi-pencil" type="submit"></button>
+                        </form>                           
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>

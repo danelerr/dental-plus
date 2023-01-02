@@ -251,20 +251,6 @@ export const ModiCuest = async(req,res) =>{
 }
 export const Histrata = async(req,res) =>{
     const [rows] = await Listar.HT(req.body.id)
-    console.log(rows)
     res.render('odontologo/HTratamientos.ejs',{ datos: rows })
 }
 
-export const Atencion = async(req,res) =>{
-    const result = await busqueda.fichaP(req.body.idficha)
-    const usuario = result[0]
-    const P = await busqueda.Tratamiento(req.body.idficha)
-    const id = await busqueda.idHis(usuario[0].usuarioP)
-    const idhis = id[0]
-    const precio = P[0]
-    const today= new Date();
-    const datos = [today.toLocaleTimeString(),'00:00:00',req.body.idficha,req.body.estadoAte,precio[0].precio,idhis[0].id]
-    await pool.query('INSERT INTO atencion(horaInicio, horaFin, idFicha, idEstadoA, Preciototal,IdHis) VALUES (?,?,?,?,?,?)',datos)
-    const [row] = await busqueda.PacienteEsp(usuario[0].usuarioP)
-    res.render('odontologo/Historial.ejs',{ datos: row[0] })
-}

@@ -100,7 +100,7 @@ export const generarPDF = async (req, res) => {
   } else {
     //REPORTE DE ATENCIONES pdf
     topdf.head = ['Nro de ticket', 'hora de inicio', 'hora de finalización', 'Estado', 'nombre del paciente', 'nombre del odontólogo', 'tratamiento', 'Precio total'];
-    const [rows] = await pool.query('select idFicha as ticket, horaInicio, horaFin, estadoatencion.detalle, paciente.nombre as nombrepaciente, odontologo.nombre as nombreodontologo, tratamiento.nombre as tratamiento, Preciototal from atencion, usuario as paciente, usuario as odontologo, estadoatencion, ficha, tratamiento where (idFicha = ficha.id) and (estadoatencion.id = idEstadoA) and (ficha.usuarioP = paciente.user) and (ficha.usuarioOdonto = odontologo.user)  and (ficha.idTratamiento = tratamiento.id) order by idEstadoA;');
+    const [rows] = await pool.query('select idFicha as ticket, horaInicio, horaFin, estadoAtencion.detalle, paciente.nombre as nombrepaciente, odontologo.nombre as nombreodontologo, tratamiento.nombre as tratamiento, Preciototal from atencion, usuario as paciente, usuario as odontologo, estadoAtencion, ficha, tratamiento where (idFicha = ficha.id) and (estadoAtencion.id = idEstadoA) and (ficha.usuarioP = paciente.user) and (ficha.usuarioOdonto = odontologo.user)  and (ficha.idTratamiento = tratamiento.id) order by idEstadoA;');
     let mat = [];
     console.log(rows);
     rows.forEach((element, index, array) => {

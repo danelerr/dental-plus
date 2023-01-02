@@ -203,6 +203,8 @@
                             event_theme: 'green'
                         }
                     ],
+
+
                     event_title: '',
                     event_date: '',
                     event_theme: 'blue',
@@ -272,6 +274,14 @@
     
                         //close the modal
                         this.openEventModal = false;
+                    },
+
+                    addEvent2(eventDate, eventTittle, eventTheme) {
+                        this.events.push({
+                            event_date: this.event_date,
+                            event_title: this.event_title,
+                            event_theme: this.event_theme
+                        });
                     },
     
                     getNoOfDays() {

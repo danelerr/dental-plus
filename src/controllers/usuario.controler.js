@@ -261,7 +261,6 @@ export const Atencion = async(req,res) =>{
     const P = await busqueda.Tratamiento(req.body.idficha)
     const id = await busqueda.idHis(usuario[0].usuarioP)
     const idhis = id[0]
-    console.log(idhis)
     const precio = P[0]
     const today= new Date();
     const datos = [today.toLocaleTimeString(),'00:00:00',req.body.idficha,req.body.estadoAte,precio[0].precio,idhis[0].id]

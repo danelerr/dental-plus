@@ -60,35 +60,6 @@
 
         const doc = new jsPDF();
         let h1 = document.getElementById('content');
-        //  doc.html(h1,10,10);
-        // doc.save("output.pdf");
-
-        // doc.html(document.body, {
-        //     callback: function (doc) {
-        //         doc.save('hola.pdf');
-        //     },
-        //     x: 10,
-        //     y: 10
-        // });
-
-        // doc.autoTable({
-        //     head: [['hola','nombre','nivel']],
-        //     body: [
-        //             ['1', 'username1', '9'],
-        //             ['2', 'username2', '10'],
-        //             ['3', 'username3', '10']
-        //         ]
-        // }); 
-
-
-        // doc.setFontSize(20);
-        // doc.text('hola table', 10, 10);
-        // doc.setFontSize(10);
-        // doc.autoTable({
-        //     theme: "grid", 
-        //     html: '#tablita'
-        // });
-        // doc.save('desiored.pdf');
         var totalPagesExp = '{total_pages_count_string}'
         jsPDF.autoTableSetDefaults({
             headStyles: { fillColor: 0 },

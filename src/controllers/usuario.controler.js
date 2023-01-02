@@ -254,3 +254,15 @@ export const Histrata = async(req,res) =>{
     console.log(rows)
     res.render('odontologo/HTratamientos.ejs',{ datos: rows })
 }
+
+export const Atencion = async(req,res) =>{
+    const result = await busqueda.fichaP(req.body.idficha)
+    const P = await busqueda.Tratamiento(req.body.idficha)
+    const precio = P[0]
+    const today= new Date();
+    const datos = [today.toLocaleTimeString(),'00:00:00',req.body.idficha,req.body.estadoAte,precio[0].precio]
+    const usuario = result[0]
+    await pool.query('INSERT INTO atencion(horaInicio, horaFin, idFicha, idEstadoA, Preciototal) VALUES (?,?,?,?,?)',datos)
+    const [row] = await busqueda.PacienteEsp(usuario[0].usuarioP)
+    res.render('odontologo/Historial.ejs',{ datos: row[0] })
+}

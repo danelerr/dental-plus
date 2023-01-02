@@ -30,11 +30,12 @@ import { insertarUsuario,
     buscarHPacientes,
     Historia,
     ModiCuest,
-    Histrata
+    Histrata,
+    Atencion
 } from "../controllers/usuario.controler.js";
 
 
-import { logeado, logeadoA, logeadoE, logeadoP} from "../lib/privado.js";
+import { logeado, logeadoA, logeadoE, logeadoO, logeadoP} from "../lib/privado.js";
 
 const router = Router();
 
@@ -78,6 +79,7 @@ router.get('/HistoriasB',logeadoE,buscarHPacientes)
 router.post('/Hpaciente',logeadoE,Historia)
 router.post('/MCues',logeadoE,ModiCuest)
 router.post('/Histrata',logeadoE,Histrata)
+router.post('/Atender',logeadoO,Atencion)
 
 
 export default router;

@@ -111,6 +111,23 @@ busqueda.Roles = async() => {
     }
 }
 
+busqueda.Tratamiento = async(ID) => {
+    try {
+        const Result =  await pool.query('Select precio from tratamiento,ficha where tratamiento.id=ficha.idTratamiento and ficha.id = ?', ID);
+        return Result
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+busqueda.fichaP = async(ID) => {
+    try {
+        const Result =  await pool.query('Select usuarioP from ficha where ficha.id = ?', ID);
+        return Result
+    } catch (e) {
+        console.log(e)
+    }
+}
 
 
 

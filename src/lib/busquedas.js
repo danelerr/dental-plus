@@ -129,6 +129,13 @@ busqueda.fichaP = async(ID) => {
     }
 }
 
-
+busqueda.idHis = async(usuario) => {
+    try {
+        const Result =  await pool.query('Select id from historia where usuarioP = ?', usuario);
+        return Result
+    } catch (e) {
+        console.log(e)
+    }
+}
 
 export default busqueda;

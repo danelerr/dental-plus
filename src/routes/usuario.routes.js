@@ -30,10 +30,11 @@ import { insertarUsuario,
     buscarHPacientes,
     Historia,
     ModiCuest,
-    Histrata,
-    Atencion
+    Histrata
 } from "../controllers/usuario.controler.js";
 
+import {Atencion,ViewGATe} from "../controllers/atencion.controller.js";
+import { viewT } from "../controllers/tratamiento.controller.js";
 
 import { logeado, logeadoA, logeadoE, logeadoO, logeadoP} from "../lib/privado.js";
 
@@ -80,6 +81,8 @@ router.post('/Hpaciente',logeadoE,Historia)
 router.post('/MCues',logeadoE,ModiCuest)
 router.post('/Histrata',logeadoE,Histrata)
 router.post('/Atender',logeadoO,Atencion)
-
+router.get('/GAtender',logeadoO,ViewGATe)
+router.post('/setestadoA',logeadoO,Atencion)
+router.get('/Tratamientos',logeadoP,viewT)
 
 export default router;

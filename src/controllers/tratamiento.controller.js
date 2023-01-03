@@ -66,6 +66,7 @@ export const Fin = async(req,res) =>{
     const atencion =  req.body.atencion
     const Paciente = req.body.Paciente
     console.log(atencion)
+    const today= new Date();
     const hora = today.toLocaleTimeString()
     const Hora1 = hora.split(' ')[0] 
     await pool.query('update historia set informacion = ? where usuarioP=?',[req.body.detalle,Paciente])

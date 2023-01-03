@@ -74,13 +74,26 @@
                             <tbody>
                                 <% for (let i=0; i < datos1.length; i++) { %>
                                     <tr>
+                                        <% for (let j=0; j < recetas.length; j++) { %>
                                         <td scope="col"><%= i+1 %></td>
                                         <td scope="col"><%= datos1[i].tratamiento %></td>
                                         <td scope="col"><%= datos1[i].horaInicio %></td>
                                         <td scope="col"><%= datos1[i].horaFin %></td>
                                         <td scope="col"><%= datos1[i].ficha %></td>
                                         <td scope="col"><%= datos1[i].Estado %></td>
-                                        <td scope="col"><%= datos1[i].Preciototal %></td>                                        
+                                        <td scope="col"><%= datos1[i].Preciototal %></td>
+                                        <td scope="col">                                        
+                                            <% if(datos1[i].id == recetas[j].id_A){ %> 
+                                                <form action="/Mrece" method="post"> 
+                                                    <input type="hidden" name="id" value= <%= datos.user %> >
+                                                    <input type="hidden" name="Paciente" value= <%= Paciente.Paciente %> >
+                                                    <input type="hidden" name="atencion" value= <%= datos2.atencion %> >                           
+                                                    <input type="hidden" name="idreceta" value= <%= recetas[j].id %> >
+                                                    <button class="btn btn-outline-primary" type="submit">Modificar</button>
+                                                </form>
+                                            <% } %>                                         
+                                        </td>
+                                    <% } %>                               
                                     </tr>
                                     <% } %>
                             </tbody>

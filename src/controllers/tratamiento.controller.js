@@ -10,7 +10,8 @@ import Listar from "../lib/mostrar.js";
 
 export const viewT = async(req,res) =>{
     const [rows]=await pool.query('select atencion.id as id,tratamiento.nombre as tratamiento,horaInicio,horaFin,idFicha as ficha,estadoAtencion.detalle as Estado,Preciototal from atencion,estadoAtencion,paciente,tratamiento,ficha where estadoAtencion.id=idEstadoA and atencion.idFicha=ficha.id and idTratamiento=tratamiento.id and paciente.usuario=? order by ficha.id desc ',req.user[0].user)
-    res.render('paciente/Tratamientos.ejs',{datos: rows})
+    const [recetas]=await pool.query('Select receta.* from atencion,receta,ficha where receta.id_A = atencion.id and atencion.idFicha=ficha.id and ficha.usuarioP=?',req.user[0].user)
+    res.render('paciente/Tratamientos.ejs',{datos: rows,recetas:recetas})
 }
 
 export const Histotrata = async(req,res) =>{
@@ -41,7 +42,8 @@ export const vT = async(req,res) =>{
     const [row] = await busqueda.PacienteEsp(req.body.id)
     const atencion =  req.body.atencion
     const Paciente = req.body.Paciente
-    res.render('odontologo/TrataP.ejs',{Paciente: {Paciente}, datos: row[0], datos1: rows , datos2:{atencion}})
+    const [recetas]=await pool.query('Select receta.* from atencion,receta,ficha where receta.id_A = atencion.id and atencion.idFicha=ficha.id and ficha.usuarioP=?',Paciente)
+    res.render('odontologo/TrataP.ejs',{recetas:recetas,Paciente: {Paciente}, datos: row[0], datos1: rows , datos2:{atencion}})
 }
 
 export const vO = async(req,res) =>{
@@ -103,4 +105,35 @@ export const ContTra = async(req,res) =>{
     await pool.query('insert into ficha(fechaReserva,fechaCita,horaCita,usuarioOdonto,usuarioP,idEstadoRes,idTratamiento) values (?,?,?,?,?,?,?)',[FechaR,req.body.Fecha,req.body.hora,Odontologo,Paciente,1,req.body.Tratamiento])
     await pool.query('update atencion set horaFin = ? where id = ?',[Hora1,atencion])
     res.redirect('/home')
+}
+
+export const ViewRe = async(req,res) =>{
+    const id = req.body.idreceta
+    const [Tratamientos] = await busqueda.receta(id)
+    console.log(Tratamientos)
+    res.render('paciente/viewReceta.ejs',{datos: Tratamientos[0]})
+}
+
+export const MRe = async(req,res) =>{
+    const id = req.body.idreceta
+    const atencion =  req.body.atencion
+    const Paciente = req.body.Paciente
+    const Odontologo = req.user[0].user
+    const [Tratamientos] = await busqueda.receta(id)
+    const [rows] = await busqueda.PacienteEsp(req.body.id)
+    res.render('odontologo/Mrece.ejs',{receta: Tratamientos[0],datos:rows[0],Paciente:{Paciente},datos2:{atencion},Odontologo:{Odontologo}})
+}
+
+export const UpRe = async(req,res) =>{
+    const id = req.body.idRece
+    console.log(id)
+    const atencion =  req.body.atencion
+    const Paciente = req.body.Paciente
+    const Odontologo = req.user[0].user
+    const [rows] = await busqueda.PacienteEsp(req.body.id)
+    const [Tratamientos] = await busqueda.receta(id)
+    await pool.query('update receta set medicamento=? where id=?',[req.body.medicamento,id])
+    await pool.query('update receta set tiempo=? where id=?',[req.body.hora,id])
+    await pool.query('update receta set detalle=? where id=?',[req.body.detalle,id])
+    res.render('odontologo/HistorialT.ejs',{receta: Tratamientos[0],datos:rows[0],Paciente:{Paciente},datos2:{atencion},Odontologo:{Odontologo}})
 }

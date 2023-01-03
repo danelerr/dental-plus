@@ -147,4 +147,13 @@ busqueda.ListarTratamientos = async() => {
     }
 }
 
+busqueda.receta = async(id) => {
+    try {
+        const Result =  await pool.query('Select receta.* from receta where receta.id= ?',id);
+        return Result
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 export default busqueda;

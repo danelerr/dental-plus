@@ -15,8 +15,8 @@ export const Atencion = async(req,res) =>{
     const idhis = id[0]
     const precio = P[0]
     const today= new Date();
-    const hora = today.toLocaleTimeString()
-    const Hora1 = hora.split(' ')[0] 
+    const Hora1 = today.toLocaleTimeString()
+    //const Hora1 = hora.split(' ')[0] 
     const datos = [Hora1,'00:00:00',req.body.idficha,req.body.estadoAte,precio[0].precio,idhis[0].id]
     await pool.query('INSERT INTO atencion(horaInicio, horaFin, idFicha, idEstadoA, Preciototal,IdHis) VALUES (?,?,?,?,?,?)',datos)
     const [row] = await busqueda.PacienteEsp(usuario[0].usuarioP)

@@ -34,7 +34,7 @@ import { insertarUsuario,
 } from "../controllers/usuario.controler.js";
 
 import {Atencion,setestadoA,ViewGATe} from "../controllers/atencion.controller.js";
-import { ContTra, Fin, FinT, Grece, Histotrata, SigR, viewT, vO, vRece, vT } from "../controllers/tratamiento.controller.js";
+import { ContTra, Fin, FinT, Grece, Histotrata, MRe, SigR, UpRe, ViewRe, viewT, vO, vRece, vT } from "../controllers/tratamiento.controller.js";
 
 import { logeado, logeadoA, logeadoE, logeadoO, logeadoP} from "../lib/privado.js";
 
@@ -94,6 +94,9 @@ router.post('/FinalizarT',logeadoE,FinT)
 router.post('/FTrata',logeadoE,Fin)
 router.post('/SigRes',logeadoE,SigR)
 router.post('/ContTra',logeadoE,ContTra)
+router.post('/ViewRe',logeadoP,ViewRe)
+router.post('/Mrece',logeadoE,MRe)
+router.post('/Mreceta',logeadoE,UpRe)
 
 
 export default router;

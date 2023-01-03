@@ -138,4 +138,13 @@ busqueda.idHis = async(usuario) => {
     }
 }
 
+busqueda.ListarTratamientos = async() => {
+    try {
+        const Result =  await pool.query('Select id,nombre from tratamiento');
+        return Result
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 export default busqueda;

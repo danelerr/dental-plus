@@ -59,5 +59,43 @@ export const FinT = async(req,res) =>{
     const [row] = await busqueda.PacienteEsp(req.body.id)
     const atencion =  req.body.atencion
     const Paciente = req.body.Paciente
-    res.render('odontologo/Finalizar.ejs',{Total:{Total},Paciente: {Paciente}, datos: row[0], datos1: rows , datos2:{atencion}})
+    res.render('odontologo/Finalizar.ejs',{Total:Total[0],Paciente: {Paciente}, datos: row[0], datos1: rows , datos2:{atencion}})
+}
+
+export const Fin = async(req,res) =>{
+    const atencion =  req.body.atencion
+    const Paciente = req.body.Paciente
+    console.log(atencion)
+    await pool.query('update historia set informacion = ? where usuarioP=?',[req.body.detalle,Paciente])
+    await pool.query('update atencion set idEstadoA = 2 where id = ?',atencion)
+    await pool.query('update atencion set Preciototal = ? where id = ?',[req.body.Total,atencion])
+    await pool.query('update atencion set idEstadoA = 2 where idEstadoA = ?',1)
+    await pool.query('update atencion set horaFin = ? where id = ?',[today.toLocaleTimeString(),atencion])
+    res.redirect('/home')
+}
+
+export const SigR = async(req,res) =>{
+    const atencion =  req.body.atencion
+    const Paciente = req.body.Paciente
+    const Odontologo = req.user[0].user
+    const [Tratamientos] = await busqueda.ListarTratamientos()
+    console.log(Tratamientos)
+    res.render('odontologo/SigTrata.ejs',{Tratamientos: Tratamientos, Paciente:{Paciente},datos2:{atencion},Odontologo:{Odontologo}})
+}
+
+export const ContTra = async(req,res) =>{
+    const atencion =  req.body.atencion
+    const Paciente = req.body.Paciente
+    const Odontologo = req.user[0].user
+    const today= new Date();
+    var day = today.getDate(); 
+    // `getMonth()` devuelve el mes (de 0 a 11)
+    var month = today.getMonth() + 1; 
+    // `getFullYear()` devuelve el año completo
+    var year = today.getFullYear(); 
+    // muestra la fecha de hoy en formato `MM/DD/YYYY`
+    const FechaR = `${year}/${month}/${day}`
+    await pool.query('insert into ficha(fechaReserva,fechaCita,horaCita,usuarioOdonto,usuarioP,idEstadoRes,idTratamiento) values (?,?,?,?,?,?,?)',[FechaR,req.body.Fecha,req.body.hora,Odontologo,Paciente,1,req.body.Tratamiento])
+    await pool.query('update atencion set horaFin = ? where id = ?',[today.toLocaleTimeString(),atencion])
+    res.redirect('/home')
 }

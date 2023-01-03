@@ -33,8 +33,8 @@ import { insertarUsuario,
     Histrata
 } from "../controllers/usuario.controler.js";
 
-import {Atencion,ViewGATe} from "../controllers/atencion.controller.js";
-import { Grece, Histotrata, viewT, vO, vRece, vT } from "../controllers/tratamiento.controller.js";
+import {Atencion,setestadoA,ViewGATe} from "../controllers/atencion.controller.js";
+import { ContTra, Fin, FinT, Grece, Histotrata, SigR, viewT, vO, vRece, vT } from "../controllers/tratamiento.controller.js";
 
 import { logeado, logeadoA, logeadoE, logeadoO, logeadoP} from "../lib/privado.js";
 
@@ -83,14 +83,17 @@ router.post('/Histrata',logeadoE,Histrata)
 
 router.post('/Atender',logeadoO,Atencion)
 router.get('/GAtender',logeadoO,ViewGATe)
-router.post('/setestadoA',logeadoO,Atencion)
+router.post('/setestadoA',logeadoO,setestadoA)
 router.get('/Tratamientos',logeadoP,viewT)
 router.post('/Histotrata',logeadoE,Histotrata)
 router.post('/Recetar',logeadoE,vRece)
 router.post('/GReceta',logeadoE,Grece)
 router.post('/TrataP',logeadoE,vT)
 router.post('/Odontograma',logeadoE,vO)
-router.post('/FinalizarT',logeadoE,vO)
+router.post('/FinalizarT',logeadoE,FinT)
+router.post('/FTrata',logeadoE,Fin)
+router.post('/SigRes',logeadoE,SigR)
+router.post('/ContTra',logeadoE,ContTra)
 
 
 export default router;

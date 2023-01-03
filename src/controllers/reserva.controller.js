@@ -20,7 +20,7 @@ export const agendarOdontologo = async(req, res) => {
     console.log(req.body);
     req.flash('ficha', req.body);
     const [rows] = await pool.query(
-      "select usuario.nombre, odontologo.usuario from especialidadOdonto, odontologo, usuario where idEspe = ? and odontologo.usuario = usuarioOdonto and odontologo.usuario = usuario.user;", req.body.idespe);
+      "select usuario.nombre, odontologo.usuario from especialidadodonto, odontologo, usuario where idEspe = ? and odontologo.usuario = usuarioOdonto and odontologo.usuario = usuario.user;", req.body.idespe);
     if (rows.length <= 0) {
         return res.status(404).json({
             mensaje: "No hay odontologos que traten esa cosa",

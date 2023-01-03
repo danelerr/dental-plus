@@ -45,10 +45,10 @@
                                                 <td scope="col"><%= datos[i].ficha %></td>
                                                 <td scope="col"><%= datos[i].Estado %></td>
                                                 <td scope="col"><%= datos[i].Preciototal %></td>
-                                                <% if(datos[i].Estado != 'Finalizado') { %>
+                                                <% if(datos[i].Estado != 'Finalizado' && datos[i].Estado != 'Abandonado') { %>
                                                     <td scope="row p-3 al">
                                                         <form action="/setestadoA" method="post">                            
-                                                            <input type="hidden" name="idficha" value= <%= datos[i].id %> >
+                                                            <input type="hidden" name="idficha" value= <%= datos[i].ficha %> >
                                                             <input type="hidden" name="estadoRes" value="3">
                                                             <button class="btn btn-secondary" type="submit">Marcar como abandonado</button>
                                                         </form>                                                        

@@ -58,10 +58,10 @@
                                 <td> <%= datos[i].precio %> </td>
                                 <form action="/reservar" method="post">
                                     <th>
-                                        <input type="date" name="fecha" step="2" required/>
+                                        <input type="date" name="fecha" required/>
                                     </th>
                                     <th>
-                                        <input type="time" name="hora" step="3600" required/>
+                                        <input type="time" name="hora" required/>
                                     </th>
                                     <td>
                                         <button type="submit" id="seleccionar" name="idtrata" value=<%= datos[i].id %> class="btn btn-success">

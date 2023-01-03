@@ -1,0 +1,33 @@
+<%- include('../partials/barramenu') %>
+<div class="container">
+    <div class="row">
+        <div class="jumbotron ">
+            <h1>
+                Siguiente Atencion
+            </h1>
+       </div>           
+    </div> 
+</div> 
+<form action="/ContTra" method="post" class=" mx-auto">
+<div class="container card-body">
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Fecha</label>
+    <input type="date" class="form-control" name="Fecha">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">hora</label>
+    <input type="time" class="form-control" name="hora">
+  </div>
+  <select id='sel-ocupacion' class="form-select" aria-label="Ocupacion" name="Tratamiento" required>
+    <% for (let i=0; i < Tratamientos.length; i++) { %>
+      <option value=<%= Tratamientos[i].id%> > <%= Tratamientos[i].nombre%> </option>
+    <% } %>
+  </select>
+      <center>  
+            <input type="hidden" name="id" value= <%= Odontologo.Odontologo %> >
+            <input type="hidden" name="Paciente" value= <%= Paciente.Paciente %> >
+            <input type="hidden" name="atencion" value= <%= datos2.atencion %> >
+            <input type="submit" value="Finalizar" class="btn btn-dark">       
+    </center>
+</form>
+</div>

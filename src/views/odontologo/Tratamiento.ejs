@@ -295,9 +295,15 @@
 </body>
 </html>
 <form action="/FinalizarT" method="post">
+    <input type="hidden" name="id" value= <%= datos.user %> >
+    <input type="hidden" name="Paciente" value= <%= Paciente.Paciente %> >
+    <input type="hidden" name="atencion" value= <%= datos2.id %> >
     <button type="submit" class="btn-flotante2">FINALIZAR</button>
 </form>
 <form action="/SigRes" method="post">
+    <input type="hidden" name="id" value= <%= datos.user %> >
+    <input type="hidden" name="Paciente" value= <%= Paciente.Paciente %> >
+    <input type="hidden" name="atencion" value= <%= datos2.id %> >
     <button type="submit" class="btn-flotante">CONTINUAR</button>
 </form>
 

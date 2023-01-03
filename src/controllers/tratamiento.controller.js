@@ -66,11 +66,13 @@ export const Fin = async(req,res) =>{
     const atencion =  req.body.atencion
     const Paciente = req.body.Paciente
     console.log(atencion)
+    const hora = today.toLocaleTimeString()
+    const Hora1 = hora.split(' ')[0] 
     await pool.query('update historia set informacion = ? where usuarioP=?',[req.body.detalle,Paciente])
     await pool.query('update atencion set idEstadoA = 2 where id = ?',atencion)
     await pool.query('update atencion set Preciototal = ? where id = ?',[req.body.Total,atencion])
     await pool.query('update atencion set idEstadoA = 2 where idEstadoA = ?',1)
-    await pool.query('update atencion set horaFin = ? where id = ?',[today.toLocaleTimeString(),atencion])
+    await pool.query('update atencion set horaFin = ? where id = ?',[Hora1,atencion])
     res.redirect('/home')
 }
 
@@ -95,7 +97,9 @@ export const ContTra = async(req,res) =>{
     var year = today.getFullYear(); 
     // muestra la fecha de hoy en formato `MM/DD/YYYY`
     const FechaR = `${year}/${month}/${day}`
+    const hora = today.toLocaleTimeString()
+    const Hora1 = hora.split(' ')[0] 
     await pool.query('insert into ficha(fechaReserva,fechaCita,horaCita,usuarioOdonto,usuarioP,idEstadoRes,idTratamiento) values (?,?,?,?,?,?,?)',[FechaR,req.body.Fecha,req.body.hora,Odontologo,Paciente,1,req.body.Tratamiento])
-    await pool.query('update atencion set horaFin = ? where id = ?',[today.toLocaleTimeString(),atencion])
+    await pool.query('update atencion set horaFin = ? where id = ?',[Hora1,atencion])
     res.redirect('/home')
 }

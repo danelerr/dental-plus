@@ -18,7 +18,9 @@ export const Atencion = async(req,res) =>{
     const datos = [today.toLocaleTimeString(),'00:00:00',req.body.idficha,req.body.estadoAte,precio[0].precio,idhis[0].id]
     await pool.query('INSERT INTO atencion(horaInicio, horaFin, idFicha, idEstadoA, Preciototal,IdHis) VALUES (?,?,?,?,?,?)',datos)
     const [row] = await busqueda.PacienteEsp(usuario[0].usuarioP)
-    res.render('odontologo/Historial.ejs',{ datos: row[0] })
+    const [rows]=await pool.query('select atencion.id as id,horaInicio,horaFin,idFicha as ficha,estadoAtencion.detalle as Estado,Preciototal, ficha.usuarioP as Paciente from atencion,estadoAtencion,odontologo,ficha where estadoAtencion.id=idEstadoA and idFicha=ficha.id and odontologo.usuario=?',req.user[0].user)
+    const Paciente = rows[0].Paciente
+    res.render('odontologo/Tratamiento.ejs',{ Paciente:{Paciente}, datos: row[0] , datos2: rows[0] })
 }
 
 export const ViewGATe = async(req,res) =>{

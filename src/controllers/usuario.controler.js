@@ -254,3 +254,5 @@ export const Histrata = async(req,res) =>{
     res.render('odontologo/HTratamientos.ejs',{ datos: rows })
 }
 
+
+

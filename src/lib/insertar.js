@@ -27,4 +27,8 @@ Insertar.Servicio = async( arreglo ) => {
         await pool.query('INSERT INTO tratamiento SET ?', [arreglo]);
 }
 
+Insertar.Receta = async( arreglo ) => {
+        await pool.query('INSERT INTO receta(medicamento,tiempo,detalle,id_A) values(?)', [arreglo]);
+}
+
 export default Insertar;

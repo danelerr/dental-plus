@@ -1,0 +1,31 @@
+<%- include('../partials/barramenu') %>
+<div class="container">
+    <div class="row">
+        <div class="jumbotron ">
+            <h1>
+                Finalizar Tratamiento
+            </h1>
+       </div>           
+    </div> 
+</div> 
+<form action="/GReceta" method="post" class=" mx-auto">
+<div class="container card-body">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Nombre de Medicamentos</label>
+        <input type="text" class="form-control" name="medicamento" placeholder="">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Cada : </label>
+        <input type="time" name="hora" required/>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
+        <textarea class="form-control" name="detalle" rows="3"></textarea>
+      </div>
+      <center>  
+            <input type="hidden" name="id" value= <%= datos.user %> >
+            <input type="hidden" name="atencion" value= <%= datos2.atencion %> >
+            <input type="submit" value="Guardar" class="btn btn-dark">       
+    </center>
+</form>
+</div>

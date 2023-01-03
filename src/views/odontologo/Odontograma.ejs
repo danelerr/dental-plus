@@ -1,0 +1,40 @@
+<%- include('../partials/barramenu') %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <form action="/Histotrata" method="post" class="col-auto">
+                <input type="hidden" name="id" value= <%= datos.user %> >
+                <input type="hidden" name="Paciente" value= <%= Paciente.Paciente %> >
+                <input type="hidden" name="atencion" value= <%= datos2.id %> >
+                <button type="submit" class="btn btn-dark">Historia</button>
+            </form>
+            <form action="/Odontograma" method="post" class="col-auto">
+                <input type="hidden" name="id" value= <%= datos.user %> >
+                <input type="hidden" name="Paciente" value= <%= Paciente.Paciente %> >
+                <input type="hidden" name="atencion" value= <%= datos2.id %> >
+                <button type="submit" class="btn btn-dark">Odontograma</button>
+            </form>
+            <form action="/Recetar" method="post" class="col-auto">
+                <input type="hidden" name="id" value= <%= datos.user %> >
+                <input type="hidden" name="Paciente" value= <%= Paciente.Paciente %> >
+                <input type="hidden" name="atencion" value= <%= datos2.id %> >
+                <button type="submit" class="btn btn-dark">Recetar</button>
+            </form> 
+            <form action="/TrataP" method="post" class="col-auto">
+                <input type="hidden" name="id" value= <%= datos.user %> >
+                <input type="hidden" name="Paciente" value= <%= Paciente.Paciente %> >
+                <input type="hidden" name="atencion" value= <%= datos2.id %> >
+                <button type="submit" class="btn btn-dark">Tratamientos</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+<form action=""><button href="#" class="btn-flotante2">FINALIZAR</button></form>
+<form action=""><button href="#" class="btn-flotante">CONTINUAR</button></form>

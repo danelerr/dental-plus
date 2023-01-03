@@ -34,7 +34,7 @@ import { insertarUsuario,
 } from "../controllers/usuario.controler.js";
 
 import {Atencion,ViewGATe} from "../controllers/atencion.controller.js";
-import { viewT } from "../controllers/tratamiento.controller.js";
+import { Grece, Histotrata, viewT, vO, vRece, vT } from "../controllers/tratamiento.controller.js";
 
 import { logeado, logeadoA, logeadoE, logeadoO, logeadoP} from "../lib/privado.js";
 
@@ -80,9 +80,17 @@ router.get('/HistoriasB',logeadoE,buscarHPacientes)
 router.post('/Hpaciente',logeadoE,Historia)
 router.post('/MCues',logeadoE,ModiCuest)
 router.post('/Histrata',logeadoE,Histrata)
+
 router.post('/Atender',logeadoO,Atencion)
 router.get('/GAtender',logeadoO,ViewGATe)
 router.post('/setestadoA',logeadoO,Atencion)
 router.get('/Tratamientos',logeadoP,viewT)
+router.post('/Histotrata',logeadoE,Histotrata)
+router.post('/Recetar',logeadoE,vRece)
+router.post('/GReceta',logeadoE,Grece)
+router.post('/TrataP',logeadoE,vT)
+router.post('/Odontograma',logeadoE,vO)
+router.post('/FinalizarT',logeadoE,vO)
+
 
 export default router;

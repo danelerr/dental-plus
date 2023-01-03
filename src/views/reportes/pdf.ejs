@@ -9,8 +9,8 @@
 </head>
 
 <body>
-    <!-- style="display: none;" -->
-    <table id="tablita">
+
+    <table id="tablita" style="display: none;">
         <thead>
             <tr>
                 <% for (let i=0; i < head.length; i++) { %>
@@ -21,17 +21,13 @@
         <tbody>
             <% for (let i=0; i < body.length; i++) { %>
             <tr>
-                <td><%= body[i].user %></td>
-                <td><%= body[i].nombre %></td>
-                <td><%= body[i].correo %></td>
-                <td><%= body[i].edad %></td>
-                <td><%= body[i].fechaNac %></td>
-                <td><%= body[i].ocu %></td>
+                <% for (let j=0; j < body[i].length; j++) { %> 
+                    <td><%= body[i][j] %></td>
+                <% } %>
             </tr>
             <% } %>
         </tbody>
     </table>
-    <button id="btn">generar</button>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"

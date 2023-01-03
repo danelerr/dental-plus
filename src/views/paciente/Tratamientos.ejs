@@ -36,25 +36,25 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <% for (let i=0; i < datos.length; i++) { %>
+                                <% for (let i=0; i < datos.length; i++) { %>  
                                     <tr>
-                                        <% for (let j=0; j < recetas.length; j++) { %>
                                         <td scope="col"><%= i+1 %></td>
-                                        <td scope="col"><%= datos[i].tratamiento %></td>
-                                        <td scope="col"><%= datos[i].horaInicio %></td>
-                                        <td scope="col"><%= datos[i].horaFin %></td>
-                                        <td scope="col"><%= datos[i].ficha %></td>
-                                        <td scope="col"><%= datos[i].Estado %></td>
-                                        <td scope="col"><%= datos[i].Preciototal %></td>
-                                        <td scope="col">                                        
+                                            <td scope="col"><%= datos[i].tratamiento %></td>
+                                            <td scope="col"><%= datos[i].horaInicio %></td>
+                                            <td scope="col"><%= datos[i].horaFin %></td>
+                                            <td scope="col"><%= datos[i].ficha %></td>
+                                            <td scope="col"><%= datos[i].Estado %></td>
+                                            <td scope="col"><%= datos[i].Preciototal %></td>
+                                            <td scope="row p-3 al">                                                                         
+                                        <% for (let j=0; j < recetas.length; j++) { %>
                                             <% if(datos[i].id == recetas[j].id_A){ %> 
                                                 <form action="/ViewRe" method="post">                            
                                                     <input type="hidden" name="idreceta" value= <%= recetas[j].id %> >
                                                     <button class="btn btn-outline-primary" type="submit">Ver</button>
                                                 </form>
-                                            <% } %>                                         
+                                            <% } %>
+                                            <% } %>                               
                                         </td>
-                                    <% } %>                               
                                     </tr>
                                     <% } %>
                             </tbody>

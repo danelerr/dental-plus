@@ -56,12 +56,12 @@
       </div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
-        <textarea class="form-control" name="detalle" rows="3"></textarea>
+        <textarea class="form-control" name="detalle" rows="8"></textarea>
       </div>
       <center>  
             <input type="hidden" name="id" value= <%= datos.user %> >
             <input type="hidden" name="Paciente" value= <%= Paciente.Paciente %> >
-            <input type="hidden" name="atencion" value= <%= datos2.atencion %> >
+            <input type="hidden" name="atencion" value= <%= datos2.id %> >
             <input type="submit" value="Guardar" class="btn btn-dark">       
     </center>
 </form>
@@ -69,12 +69,12 @@
 <form action="/FinalizarT" method="post">
   <input type="hidden" name="id" value= <%= datos.user %> >
   <input type="hidden" name="Paciente" value= <%= Paciente.Paciente %> >
-  <input type="hidden" name="atencion" value= <%= datos2.atencion %> >
+  <input type="hidden" name="atencion" value= <%= datos2.id %> >
   <button type="submit" class="btn-flotante2">FINALIZAR</button>
 </form>
 <form action="/SigRes" method="post">
   <input type="hidden" name="id" value= <%= datos.user %> >
   <input type="hidden" name="Paciente" value= <%= Paciente.Paciente %> >
-  <input type="hidden" name="atencion" value= <%= datos2.atencion %> >
+  <input type="hidden" name="atencion" value= <%= datos2.id %> >
   <button type="submit" class="btn-flotante">CONTINUAR</button>
 </form>

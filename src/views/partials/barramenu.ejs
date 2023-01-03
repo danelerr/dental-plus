@@ -37,12 +37,10 @@
                 </div>
             </a>
 
-            <a href="/home">
                 <div class="option">
                     <i class="far fa-file" title="Gestión"></i>
                     <h4>Gestión</h4>
                 </div>
-            </a>
             <ul>
                 <% if(VerA) { %>
                 <li><a href="/gpaciente">Paciente</a></li>
@@ -57,7 +55,6 @@
                 <% } %>
                 <% if(VerO) { %>
                     <li><a href="/gpaciente">Paciente</a></li>
-                    <li><a href="/servicio">Servicio</a></li>
                     <li><a href="/Historias">Historias</a></li>
                     <li><a href="/GAtender">Registro de Atenciones</a></li>
                 <% } %>
@@ -70,19 +67,20 @@
                 </div>
             </a>
             <% } %>
+            <% if(VerO) { %>
             <a href="/agenda">
                 <div class="option">
                     <i class="bi bi-calendar-date" title="Calendario"></i>
                     <h4>Agenda</h4>
                 </div>
             </a>
-
-            <a href="/home">
+            <% } %>
+            <!-- <a href="/home">
                 <div class="option">
                     <i class="bi bi-person-square" title="Perfil"></i>
                     <h4>Perfil</h4>
                 </div>
-            </a>
+            </a> -->
 
             <a href="/cerrar">
                 <div class="option">

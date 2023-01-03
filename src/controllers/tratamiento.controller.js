@@ -40,10 +40,10 @@ export const Grece = async(req,res) =>{
 export const vT = async(req,res) =>{
     const [rows]=await pool.query('select atencion.id as id,tratamiento.nombre as tratamiento,horaInicio,horaFin,idFicha as ficha,estadoAtencion.detalle as Estado,Preciototal from atencion,estadoAtencion,paciente,tratamiento,ficha where estadoAtencion.id=idEstadoA and atencion.idFicha=ficha.id and idTratamiento=tratamiento.id and paciente.usuario=? order by ficha.id desc',req.body.Paciente)
     const [row] = await busqueda.PacienteEsp(req.body.id)
-    const atencion =  req.body.atencion
+    const id =  req.body.atencion
     const Paciente = req.body.Paciente
     const [recetas]=await pool.query('Select receta.* from atencion,receta,ficha where receta.id_A = atencion.id and atencion.idFicha=ficha.id and ficha.usuarioP=?',Paciente)
-    res.render('odontologo/TrataP.ejs',{recetas:recetas,Paciente: {Paciente}, datos: row[0], datos1: rows , datos2:{atencion}})
+    res.render('odontologo/TrataP.ejs',{recetas:recetas,Paciente: {Paciente}, datos: row[0], datos1: rows , datos2:{id}})
 }
 
 export const vO = async(req,res) =>{

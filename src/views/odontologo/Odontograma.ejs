@@ -36,6 +36,151 @@
   </nav>
 
 
+  
+<head>
+  <meta charset="utf-8" />
+  <title>Odontograma</title>
+  <script src='js/jquery-1.7.2.min.js'></script>
+  <link type="text/css" href="css/custom-theme/jquery-ui-1.8.13.custom.css" rel="stylesheet" />
+  <script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+
+  <style>
+      #myCanvas {
+          border: 1px solid #9C9898;
+      }
+
+      #myCanvas2 {
+          border: 1px solid #9C9898;
+      }
+
+      #myCanvas3 {
+          border: 1px solid #9C9898;
+      }
+
+      #myCanvas4 {
+          border: 1px solid #9C9898;
+      }
+
+      body {
+          text-align: center;
+          margin-left: 0%;
+          margin-top: 0%;
+
+      }
+  </style>
+
+  <style type="text/css">
+      body,
+      a,
+      a:hover {
+          cursor: url(cur438.cur), progress;
+      }
+  </style>
+
+</head>
+
+<body>
+
+  <h1 id="titulox">Odontograma</h1>
+  <img class="imagen-1" id="imagenprra" src="img/dientes3.jpg" width="30%">
+  <br>
+  <button class="btn btn-secondary btn-sm" type="button" onclick="console.log(saveData)">Guardar</button>
+  <button class="btn btn-secondary btn-sm" type="button" onclick="guardarpdf()">PDF</button>
+
+  <br><br>
+
+  <div id="radio">
+      <input type="radio" id="radio1" name="accion" value="fractura" checked="checked" /> <label
+          for="radio1">Fractura/Carie</label>
+      <input type="radio" id="radio2" name="accion" value="restauracion" /> <label for="radio2">Restauración</label>
+      <input type="radio" id="radio4" name="accion" value="extraccion" /> <label for="radio4">Extracción</label>
+      <input type="radio" id="radio5" name="accion" value="puente" /> <label for="radio5">Puente</label>
+      <input type="radio" id="radio3" name="accion" value="borrar" /> <label for="radio3">Borrar</label>
+
+  </div>
+
+  <br>
+
+  <div id="canvasesdiv" style="position:relative; width:810px; height:300px; margin-left: auto; margin-right: auto;">
+
+      <canvas id="myCanvas" width="810" height="300"
+          style="z-index: 1; position:absolute; left:0px; top:0px; border: 0ch;"></canvas>
+      <canvas id="myCanvas2" width="810" height="300"
+          style="z-index: 2; position:absolute; left:0px; top:0px;border: 0ch"></canvas>
+      <canvas id="myCanvas3" width="810" height="300"
+          style="z-index: 3; position:absolute; left:0px; top:0px;border: 0ch"></canvas>
+      <canvas id="myCanvas4" width="810" height="300"
+          style="z-index: 4; position:absolute; left:0px; top:0px;border: 0ch"></canvas>
+
+  </div>
+
+  <div id="radio_seccion" style='display:none'>
+      <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label
+          for="radio_1">Sección</label>
+      <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
+  </div>
+
+  <script type="text/javascript" src="js/script.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+      integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+      integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+
+      function guardarpdf() {
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF('l', 'pt', 'letter');
+          let margin = 20;
+          let scale = (doc.internal.pageSize.width - margin * 2) / document.body.clientWidth;
+          let scaleMobile = (doc.internal.pageSize.width - margin * 2) / document.body.getBoundingClientRect();
+          data = document.getElementById('myCanvas').toDataURL('image/png');
+          data2 =  document.getElementById('myCanvas2').toDataURL('image/png');
+          data3 =  document.getElementById('myCanvas3').toDataURL('image/png');
+          data4 =  document.getElementById('myCanvas4').toDataURL('image/png');
+          
+          doc.html(document.getElementById('titulox'), {
+              callback: function (doc) {
+                  doc.addImage(data, 'PNG', margin + 20, margin*5, 699.28, 259);
+                  doc.addImage(data2, 'PNG', margin + 20, margin*5, 699.28, 259);
+                  doc.addImage(data3, 'PNG', margin + 20, margin*5, 699.28, 259);
+                  doc.addImage(data4, 'PNG', margin + 20, margin*5, 699.28, 259);
+                  doc.setFillColor('red');
+                  doc.setDrawColor('red');
+                  doc.setFontSize(15);
+                  doc.roundedRect(50, 400, 30, 30, 20, 20, 'DF');
+                  doc.text('Fractura/Carie', 100, 418);
+                  doc.setFillColor('blue');
+                  doc.setDrawColor('blue');
+                  doc.roundedRect(50, 450, 30, 30, 20, 20, 'DF');
+                  doc.text('Restauración', 100, 468);
+                  doc.setFillColor('black');
+                  doc.setDrawColor('black');
+                  doc.setLineWidth(3);
+                  doc.line(50, 500, 80, 530, 'DF');
+                  doc.line(50, 530, 80, 500   , 'DF');
+                  doc.text('Extracción', 100, 518);
+                  doc.setFillColor('red');
+                  doc.setDrawColor('red');
+                  doc.roundedRect(50, 560, 30, 5, 0, 0, 'DF');
+                  doc.text('Puente', 100, 568);
+                  doc.save('hola.pdf');
+              },
+              x: margin,
+              y: margin,
+              html2canvas:{
+                  scale: scale
+              }
+          });
+      }
+  </script>
+
+
   <form action="/FinalizarT" method="post">
     <input type="hidden" name="id" value= <%= datos.user %> >
     <input type="hidden" name="Paciente" value= <%= Paciente.Paciente %> >

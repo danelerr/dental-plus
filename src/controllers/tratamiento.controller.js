@@ -34,6 +34,7 @@ export const Grece = async(req,res) =>{
     await Insertar.Receta(arreglo)
     const [rows] = await busqueda.PacienteEsp(req.body.id)
     const Paciente = req.body.Paciente
+    await pool.query('INSERT INTO bitacora(accion,culpable) Values(?, ?)',['Realizo una receta',req.user[0].user])
     res.render('odontologo/Recetar.ejs',{Paciente: {Paciente},datos: rows[0],datos2: {id}})
 }
 
@@ -76,6 +77,7 @@ export const Fin = async(req,res) =>{
     await pool.query('update atencion set Preciototal = ? where id = ?',[req.body.Total,atencion])
     await pool.query('update atencion set idEstadoA = 2 where idEstadoA = ?',1)
     await pool.query('update atencion set horaFin = ? where id = ?',[Hora1,atencion])
+    await pool.query('INSERT INTO bitacora(accion,culpable) Values(?, ?)',['concluyo un tratamiento',req.user[0].user])
     res.redirect('/home')
 }
 
@@ -104,6 +106,7 @@ export const ContTra = async(req,res) =>{
     const Hora1 = hora.split(' ')[0] 
     await pool.query('insert into ficha(fechaReserva,fechaCita,horaCita,usuarioOdonto,usuarioP,idEstadoRes,idTratamiento) values (?,?,?,?,?,?,?)',[FechaR,req.body.Fecha,req.body.hora,Odontologo,Paciente,1,req.body.Tratamiento])
     await pool.query('update atencion set horaFin = ? where id = ?',[Hora1,id])
+    await pool.query('INSERT INTO bitacora(accion,culpable) Values(?, ?)',['Realizo una cita para tratamiento',req.user[0].user])
     res.redirect('/home')
 }
 
@@ -135,5 +138,6 @@ export const UpRe = async(req,res) =>{
     await pool.query('update receta set medicamento=? where id=?',[req.body.medicamento,id])
     await pool.query('update receta set tiempo=? where id=?',[req.body.hora,id])
     await pool.query('update receta set detalle=? where id=?',[req.body.detalle,id])
+    await pool.query('INSERT INTO bitacora(accion,culpable) Values(?, ?)',['Se Actualizo una Receta',req.user[0].user])
     res.render('odontologo/HistorialT.ejs',{receta: Tratamientos[0],datos:rows[0],Paciente:{Paciente},datos2:{id},Odontologo:{Odontologo}})
 }

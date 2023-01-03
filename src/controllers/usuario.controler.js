@@ -247,6 +247,7 @@ export const Historia = async(req,res) =>{
 
 export const ModiCuest = async(req,res) =>{
     await Modificar.cuest(req.body)
+    await pool.query('INSERT INTO bitacora(accion,culpable) Values(?, ?)',['Se modifico cuestionario de una historia',req.user[0].user])
     res.redirect('/Historias')
 }
 export const Histrata = async(req,res) =>{
